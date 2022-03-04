@@ -1,184 +1,69 @@
-import React,{useState} from 'react'
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
-import axios from 'axios';
 
-const Register = (props) => {
-
-const[FirstName,setFirstName]=useState('');
-const[LastName,setLastName]=useState('');
-const[Email,setEmail]=useState('');
-const[Password,setPassword]=useState('');
-
-const handleChangeFirstName=(e)=>{
-    setFirstName(e.target.value)
-}
-const handleChangeLastName=(e)=>{
-    setLastName(e.target.value)
-}
-const handleChangeEmail=(e)=>{
-    setEmail(e.target.value)
-}
-const handleChangePassword=(e)=>{
-    setPassword(e.target.value)
-}
-
-
-axios
-.post('http://localhost:1337/collaborators', {
-      FirstName: 'Kapman',
-        LastName: 'aaaaa',
-        Email: 'test@test.com',
-        password: 'Password',
-      })
-      .then(response => {
-        console.log('User profile', response);
-        console.log('User token', response.data.jwt);
-      })
-      .catch(error => {
-        console.log('An error occurred:', error.response);
-      });
-return(
-
-        <div >
-        <h1>Register</h1>
-
-         <form>
-          <TextField
-          fullWidth
-          id="FirstName"
-          name="FirstName"
-          label="FirstName"
-          value={FirstName}
-          onChange={handleChangeFirstName}
-
-        />
-        <TextField
-          fullWidth
-          id="LastName"
-          name="LastName"
-          label="LastName"
-          value={LastName}
-          onChange={handleChangeLastName}
-
-        />
-        <TextField
-          fullWidth
-          id="Email"
-          name="Email"
-          label="Email"
-          value={Email}
-          onChange={handleChangeEmail}
-
-        />
-        <TextField
-          fullWidth
-          id="Password"
-          name="Password"
-          label="Password"
-          value={Password}
-          onChange={handleChangePassword}
-
-        />
-         
-         
-        <Button color="primary" variant="contained" fullWidth type="submit">
-          Submit
-        </Button>
-      </form>
-        </div>
-)
-}
-
-
-
-
-export default Register
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{/*
-import React,{useState} from 'react'
+import React from 'react'
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import axios from 'axios';
 
 const Register = () => {
-
-const[FirstName,setFirstName]=useState('');
-const[LastName,setLastName]=useState('');
-const[Email,setEmail]=useState('');
-const[Password,setPassword]=useState('');
-
-const validationSchema = yup.object({
-  email: yup
-    .string('Enter your email')
-    .email('Enter a valid email')
-    .required('Email is required'),
-  password: yup
-    .string('Enter your password')
-    .min(8, 'Password should be of minimum 8 characters length')
-    .required('Password is required'),
-});
+  const validationSchema = yup.object({
+    email: yup
+      .string('Enter your email')
+      .email('Enter a valid email')
+      .required('Email is required'),
+    password: yup
+      .string('Enter your password')
+      .min(8, 'Password should be of minimum 8 characters length')
+      .required('Password is required'),
+      firstName: yup
+      .string('Enter your password')
+      .required('Password is required'),
+      lastName: yup
+      .string('Enter your password')
+      .required('Password is required'),
+  });
 
   const formik = useFormik({
     initialValues: {
-        FirstName,
-        LastName,
-        Email,
-        Password
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: ''
     },
     validationSchema: validationSchema,
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+    onSubmit: async (values) => {
+      console.log("values", values)
+     const newUser = await axios.post('http://localhost:1337/auth/local/register',
+      {email: values.email, userName: values.firstName, password: values.password}
+      )
     },
-     handleChangeFirstName: (e) => {
-      setFirstName(e.target.value);
-    },
-     
   });
 
-
-
-    return(
-
-        <div >
-         <h2>Register Now</h2>
-
-          <form onSubmit={formik.handleSubmit}>
-          <TextField
+  return (
+    <div >
+      <h2>Register Now</h2>
+      <form onSubmit={formik.handleSubmit}>
+        <TextField
           fullWidth
-          id="FirstName"
-          name="FirstName"
+          id="firstName"
+          name="firstName"
           label="FirstName"
-          value={formik.values.FirstName}
-          onChange={formik.handleChangeFirstName}
-
-        />
-         
-         <TextField
-          fullWidth
-          id="LastName"
-          name="LastName"
-          label="LastName"
-          value={formik.values.LastName}
+          value={formik.values.firstName}
           onChange={formik.handleChange}
+          error={formik.touched.firstName && Boolean(formik.errors.firstName)}
+          helperText={formik.touched.firstName && formik.errors.firstName}
+        />
+
+        <TextField
+          fullWidth
+          id="lastName"
+          name="lastName"
+          label="LastName"
+          value={formik.values.lastName}
+          onChange={formik.handleChange}
+          error={formik.touched.lastName && Boolean(formik.errors.lastName)}
+          helperText={formik.touched.lastName && formik.errors.lastName}
         />
         <TextField
           fullWidth
@@ -205,13 +90,12 @@ const validationSchema = yup.object({
           Submit
         </Button>
       </form>
-        
-        </div>
-    )
+
+    </div>
+  )
 }
 
 export default Register
 
-*/}
 
 
