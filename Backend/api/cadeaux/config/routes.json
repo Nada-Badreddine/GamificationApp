@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/cadeaux",
+      "handler": "cadeaux.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/cadeaux/count",
+      "handler": "cadeaux.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/cadeaux/:id",
+      "handler": "cadeaux.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/cadeaux",
+      "handler": "cadeaux.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/cadeaux/:id",
+      "handler": "cadeaux.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/cadeaux/:id",
+      "handler": "cadeaux.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

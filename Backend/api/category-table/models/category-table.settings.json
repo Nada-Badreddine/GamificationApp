@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "category_tables",
+  "info": {
+    "name": "categoryTable",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string"
+    }
+  }
+}
