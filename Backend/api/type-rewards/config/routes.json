@@ -2,48 +2,48 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/category-tables",
-      "handler": "category-table.find",
+      "path": "/type-rewards",
+      "handler": "type-rewards.find",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/category-tables/count",
-      "handler": "category-table.count",
+      "path": "/type-rewards/count",
+      "handler": "type-rewards.count",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/category-tables/:id",
-      "handler": "category-table.findOne",
+      "path": "/type-rewards/:id",
+      "handler": "type-rewards.findOne",
       "config": {
         "policies": []
       }
     },
     {
       "method": "POST",
-      "path": "/category-tables",
-      "handler": "category-table.create",
+      "path": "/type-rewards",
+      "handler": "type-rewards.create",
       "config": {
         "policies": []
       }
     },
     {
       "method": "PUT",
-      "path": "/category-tables/:id",
-      "handler": "category-table.update",
+      "path": "/type-rewards/:id",
+      "handler": "type-rewards.update",
       "config": {
         "policies": []
       }
     },
     {
       "method": "DELETE",
-      "path": "/category-tables/:id",
-      "handler": "category-table.delete",
+      "path": "/type-rewards/:id",
+      "handler": "type-rewards.delete",
       "config": {
         "policies": []
       }

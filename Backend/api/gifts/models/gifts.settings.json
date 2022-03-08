@@ -1,8 +1,9 @@
 {
   "kind": "collectionType",
-  "collectionName": "cadeaux",
+  "collectionName": "gifts",
   "info": {
-    "name": "cadeaux"
+    "name": "Gifts",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -31,6 +32,10 @@
       "plugin": "upload",
       "required": false,
       "pluginOptions": {}
+    },
+    "category": {
+      "model": "categories",
+      "via": "gifts"
     }
   }
 }
