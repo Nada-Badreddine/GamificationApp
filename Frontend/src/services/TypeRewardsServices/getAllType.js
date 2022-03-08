@@ -1,8 +1,8 @@
 import api from "../../utils/api";
 
-const getAllGifts = () => {
+const getAllType = () => {
   const GetToken=  localStorage.getItem('TOKEN')
-  return api.get("/gifts", {
+  return api.get("/type-rewards", {
     headers: {
       Authorization:
         'Bearer ' + GetToken,
@@ -12,5 +12,5 @@ const getAllGifts = () => {
 };
 
 export {
-   getAllGifts
+    getAllType
    };

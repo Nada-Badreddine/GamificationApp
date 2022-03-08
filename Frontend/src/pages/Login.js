@@ -5,6 +5,8 @@ import * as yup from 'yup';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import UserContext from '../context/userContext';
+import LocalStorageService from './../utils/localStorageService'
+
 
 const validationSchema = yup.object({
   email: yup
@@ -33,8 +35,8 @@ console.log("userName", userName)
       })
       setIsAuth(!!connectedUser.data.jwt)
       setUserName(connectedUser.data.user.username)
-      localStorage.setItem('TOKEN', connectedUser.data.jwt)
-      localStorage.setItem('USER_NAME', connectedUser.data.user.username)
+      LocalStorageService.setToken(connectedUser.data.jwt)
+      LocalStorageService.setUserName(connectedUser.data.user.username)
     },
   });
 
@@ -63,7 +65,7 @@ console.log("userName", userName)
           helperText={formik.touched.password && formik.errors.password}
         />
         <Button color="primary" variant="contained" fullWidth type="submit">
-          Submit
+        Submit
         </Button>
       </form>
     </div>)

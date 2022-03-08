@@ -1,71 +1,64 @@
-import React,{useState,useEffect} from 'react'
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
+import React,{useState,useEffect} from 'react';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
-import CardMedia from '@mui/material/CardMedia';
-import { experimentalStyled as styled } from '@mui/material/styles';
-import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
 import axios from './../utils/api'
 import {getAllCategories} from './../services/categoriesServices/getAllCategories'
 
+import { Modal } from 'antd';
 
-const GiftList = (props) => {
+
+
+
+const CategoriesList = (props) => {
 
     const [categoriesList, setCategoriesList] = useState([])
+    const [openModal, setOpenModal] = useState(false);
+    const [currentCategory, setCurrentCategory] = useState([]);
+
     useEffect(async () => {
-    const result = await getAllCategories ();
-       setCategoriesList (result.data);
-  }, []);
-   console.log("ddddddddddddddata",categoriesList)
+      const result = await getAllCategories ();
+      setCategoriesList (result.data);
+    }, []);
 
-
-
-   
-
-
-     const bull = (
-    <Box
-      component="span"
-      sx={{
-        display: 'inline-block', mx: '2px', transform: 'scale(0.8)', '& > :not(style)': {
-          m: 2,
-        },
-      }}
-    >
-      •
-    </Box>
-  );
 
   return (
      <>
-      <Container xs="8" style={{ display: "flex" }}>
-        <Box sx={{ flexGrow: 1 }}>
-          <Grid container spacing={3}>
-            <Grid item xs={2}>
-              <Card sx={{ minWidth: 275 }}>
-                {categoriesList.map((item) => {
+     <h1> Des récompenses pour chaque occasion</h1>
+
+      <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+      {categoriesList.map((item) => {
                   return (
-                    <CardContent>
-                      <Typography variant="body2">
-                        {item?.Name}
-                        <br />
-                      </Typography>
-                      <CardActions disableSpacing >
-                        <button>See Gifts </button>
-                      </CardActions>
-                    </CardContent>
-                  )
-                })}
-              </Card>
-            </Grid>
-          </Grid>
-        </Box>
-      </Container>
+      <ListItem alignItems="flex-start">
+        <ListItemAvatar>
+          <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+        </ListItemAvatar>
+        <ListItemText
+          primary={item?.Name}
+          secondary={
+            <React.Fragment>
+              <Typography
+                sx={{ display: 'inline' }}
+                component="span"
+                variant="body2"
+                color="text.primary"
+              >
+              </Typography>
+            </React.Fragment>
+          }
+        />
+        <div>
+            <button>Details</button>
+
+        </div>
+      </ListItem>
+       )})}
+    </List>
     </>
   )
 }
 
-export default GiftList
+export default CategoriesList
