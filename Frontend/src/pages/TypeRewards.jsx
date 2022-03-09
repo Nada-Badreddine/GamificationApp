@@ -1,12 +1,13 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState} from 'react';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 //import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import {getAllType} from './../services/TypeRewardsServices/getAllType'
 import { Col, Row, Container,Button   } from 'reactstrap';
+import {useQuery} from '@apollo/client'
+import {LOAD_TYPE_REWARDS} from './../services/TypeRewardsServices/getAllType'
 
 
 
@@ -26,14 +27,8 @@ const bull = (
 const TypeRewards = () => {
 
   const [rewardsTypes, setRewardsTypes] = useState([])
+  const { loading, data } = useQuery(LOAD_TYPE_REWARDS)
  
-  useEffect(async () => {
-    const result = await getAllType ();
-    setRewardsTypes (result.data);
-  }, []);
-
-
-console.log("aaaaa",rewardsTypes)
 
 
   return (
@@ -42,14 +37,14 @@ console.log("aaaaa",rewardsTypes)
 <Container >
 
 <Row>
- 
-{rewardsTypes.map((item) => {
+{data?.typeRewards?.map((item) => {
+
                   return (
                     <Col xs='12' md='4' >
 <Card style={{backgroundColor: 'rgb(191 191 191 / 6%)',height: '290px'}} >
       <CardContent>
         <div className="icon-sequence-bg">
-          <img src="https://assets-global.website-files.com/60080cdf80021f5e4cc61c9b/61533720e9211f738a3d8912_Automate.svg"   />
+          <img src="https://assets-global.website-files.com/60080cdf80021f5e4cc61c9b/61533720e9211f738a3d8912_Automate.svg"  className="icon-sequence" />
           
           </div>
         <Typography   variant="body2">
