@@ -6,6 +6,8 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import UserContext from '../context/userContext';
 import LocalStorageService from './../utils/localStorageService'
+import {useMutation} from '@apollo/client'
+import {LOGIN_MUTATION} from './../services/loginService/loginMutation'
 
 
 const validationSchema = yup.object({
@@ -21,7 +23,8 @@ const validationSchema = yup.object({
 
 const Login = () => {
   const { setIsAuth, setUserName, userName } = useContext(UserContext);
-console.log("userName", userName)
+  const [login,{ error }] =useMutation(LOGIN_MUTATION)
+
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -29,14 +32,23 @@ console.log("userName", userName)
     },
     validationSchema: validationSchema,
     onSubmit: async (values) => {
-      const connectedUser = await axios.post('http://localhost:1337/auth/local', {
-        identifier: values.email,
-        password: values.password,
+     login( {
+       variables:{
+         input:{ identifier: values.email,
+          password: values.password,}
+       },
+       onCompleted: ({ login }) => {
+
+      setIsAuth(!!login.jwt)
+      setUserName(login.user.username)
+      LocalStorageService.setToken(login.jwt)
+      LocalStorageService.setUserName(login.user.username)
+       }
+
+       
       })
-      setIsAuth(!!connectedUser.data.jwt)
-      setUserName(connectedUser.data.user.username)
-      LocalStorageService.setToken(connectedUser.data.jwt)
-      LocalStorageService.setUserName(connectedUser.data.user.username)
+      
+    
     },
   });
 

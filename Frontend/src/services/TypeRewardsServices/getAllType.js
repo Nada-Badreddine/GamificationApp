@@ -1,16 +1,12 @@
-import api from "../../utils/api";
 
-const getAllType = () => {
-  const GetToken=  localStorage.getItem('TOKEN')
-  return api.get("/type-rewards", {
-    headers: {
-      Authorization:
-        'Bearer ' + GetToken,
-    },
+import { gql } from '@apollo/client'
+
+export const LOAD_TYPE_REWARDS = gql`
+    query {
+      typeRewards  {
+    Title
+    Description
   }
-  );
-};
-
-export {
-    getAllType
-   };
+    }
+ `
+;
