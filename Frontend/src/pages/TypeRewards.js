@@ -11,7 +11,6 @@ import {LOAD_TYPE_REWARDS} from './../services/TypeRewardsServices/getAllType'
 
 
 
-import HomePage from './HomePage';
 
 import './../styles/TypeRewards.css'
 const bull = (
