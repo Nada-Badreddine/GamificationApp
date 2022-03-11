@@ -10,6 +10,7 @@ mutation Mutation($input: UsersPermissionsLoginInput!) {
     jwt
     user {
       username
+      id
     }
   }
 }
