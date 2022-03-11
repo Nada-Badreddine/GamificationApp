@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/favorises",
+      "handler": "favoris.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/favorises/count",
+      "handler": "favoris.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/favorises/:id",
+      "handler": "favoris.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/favorises",
+      "handler": "favoris.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/favorises/:id",
+      "handler": "favoris.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/favorises/:id",
+      "handler": "favoris.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

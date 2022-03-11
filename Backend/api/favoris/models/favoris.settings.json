@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "favorises",
+  "info": {
+    "name": "Favoris"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "gifts": {
+      "collection": "gifts",
+      "via": "favoris"
+    },
+    "users_permissions_users": {
+      "plugin": "users-permissions",
+      "collection": "user",
+      "via": "favorises",
+      "dominant": true
+    }
+  }
+}
