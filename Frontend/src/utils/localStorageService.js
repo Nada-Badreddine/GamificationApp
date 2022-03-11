@@ -9,23 +9,46 @@ const LocalStorageService = (
         }
 
 
-
-        const _clearToken = () => {
-            localStorage.removeItem("TOKEN");
+        const _setUserName = (userName) => {
+            localStorage.setItem("USER_NAME", userName);
         }
         const _getUserName = () => {
             return localStorage.getItem("USER_NAME");
         }
-
-  
-       const _setUserName = (userName) => {
-            localStorage.setItem("USER_NAME", userName);
+        const _setUserId = (id) => {
+            localStorage.setItem("USER_ID", id);
         }
+        const _getUserId = () => {
+            return localStorage.getItem("USER_ID");
+        }
+       
 
-      
+
+
+        {/*const _getUserId = (Id) => {
+            localStorage.getItem("USER_ID");
+        }
+        
+        const _setUserId = (Id) => {
+            localStorage.setItem("USER_ID", Id);
+        }
+       
+    */}
+
+        
+        
+
+
+
+        const _clearToken = () => {
+            localStorage.removeItem("TOKEN");
+        }
 
         const _clearUserName = () => {
             localStorage.removeItem("USER_NAME");
+        }
+        const _clearUserId = () => {
+            localStorage.removeItem("USER_ID");
         }
 
     
@@ -34,8 +57,11 @@ const LocalStorageService = (
             getAccessToken:_getAccessToken,
             clearToken:_clearToken,
             setUserName:_setUserName,
+            getUserId: _getUserId,
+            setUserId:_setUserId,
             getUserName:_getUserName,
             clearUserName:_clearUserName,
+            clearUserId:_clearUserId,
 
         };
     })();

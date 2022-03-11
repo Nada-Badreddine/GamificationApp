@@ -47,7 +47,7 @@ function Copyright(props) {
 
 
 
-    const { setIsAuth, setUserName, userName } = useContext(UserContext);
+    const { setIsAuth, setUserName, userName,setUserID} = useContext(UserContext);
     const [login,{ error }] =useMutation(LOGIN_MUTATION)
   
     const formik = useFormik({
@@ -63,11 +63,18 @@ function Copyright(props) {
             password: values.password,}
          },
          onCompleted: ({ login }) => {
+         
   
         setIsAuth(!!login.jwt)
+        setUserID(login.user.id)
+  
         setUserName(login.user.username)
+ 
         LocalStorageService.setToken(login.jwt)
+        LocalStorageService.setUserId(login.user.id)
+       
         LocalStorageService.setUserName(login.user.username)
+       
          }
   
          
@@ -76,6 +83,7 @@ function Copyright(props) {
       
       },
     });
+  
     
       return (
         <ThemeProvider theme={theme}>
