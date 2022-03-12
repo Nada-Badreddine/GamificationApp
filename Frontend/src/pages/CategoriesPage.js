@@ -15,6 +15,7 @@ export default function CategoriesPage() {
     return(
        
       <>
+      <Header/>
  <CategoriesCards/>
       </>
 
