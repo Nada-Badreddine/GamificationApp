@@ -15,7 +15,8 @@ function FavorisCards(props) {
 
     const userConecte = localStorage.getItem("USER_ID");
     const {error,loading,data} = useQuery(LOAD_FAVORIS_BY_USER_ID, { variables: { id: userConecte }})
-    //const {error,loading,data} = useQuery(LOAD_FAVORIS)
+    
+  
 
     console.log('first',data?.user?.favorises?.gifts)
     const ApiUrl = 'http://localhost:1337'

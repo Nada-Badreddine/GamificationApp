@@ -1,5 +1,6 @@
 import React from 'react'
 import "./../styles/UserInformation.css"
+import RewardsUser from './../components/RewardsUser';
 
 const UserInformation = () => {
   return (
@@ -9,7 +10,7 @@ const UserInformation = () => {
 
 
     </div>
-
+<RewardsUser/>
 
     </div>
   )

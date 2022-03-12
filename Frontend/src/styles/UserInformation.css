@@ -32,14 +32,15 @@ p {
 }
 
 .card-container {
-	background-color: #231E39;
-	border-radius: 5px;
-	box-shadow: 0px 10px 20px -10px rgba(0,0,0,0.75);
-	color: #B3B8CD;
-	padding-top: 30px;
-	position: relative;
-	width: 350px;
-	max-width: 100%;
+	background-color: #b3b8da45;
+    border-radius: 5px;
+    box-shadow: 0px 10px 20px -10px rgb(0 0 0 / 75%);
+    color: #B3B8CD;
+    margin-top: -256px;
+    padding-top: 35px;
+    position: relative;
+    width: 891px;
+    max-width: 100%;
 	text-align: center;
 }
 
