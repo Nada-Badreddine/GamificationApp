@@ -25,16 +25,7 @@ const LocalStorageService = (
 
 
 
-        {/*const _getUserId = (Id) => {
-            localStorage.getItem("USER_ID");
-        }
-        
-        const _setUserId = (Id) => {
-            localStorage.setItem("USER_ID", Id);
-        }
-       
-    */}
-
+     
         
         
 
