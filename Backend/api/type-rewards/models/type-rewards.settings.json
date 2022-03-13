@@ -23,6 +23,14 @@
     },
     "MinNumberPoint": {
       "type": "integer"
+    },
+    "user_rewards": {
+      "via": "type_rewards",
+      "collection": "user-rewards"
+    },
+    "writer_rewards": {
+      "via": "type_rewards",
+      "collection": "writer-reward"
     }
   }
 }

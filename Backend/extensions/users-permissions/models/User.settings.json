@@ -62,6 +62,10 @@
     "favorises": {
       "via": "users_permissions_users",
       "collection": "favoris"
+    },
+    "user_rewards": {
+      "via": "users_permissions_users",
+      "collection": "user-rewards"
     }
   }
 }

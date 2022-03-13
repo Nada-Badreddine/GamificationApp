@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "writer_rewards",
+  "info": {
+    "name": "writerReward"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "des": {
+      "type": "string"
+    },
+    "writers": {
+      "collection": "writer",
+      "via": "writer_rewards",
+      "dominant": true
+    },
+    "type_rewards": {
+      "collection": "type-rewards",
+      "via": "writer_rewards",
+      "dominant": true
+    }
+  }
+}

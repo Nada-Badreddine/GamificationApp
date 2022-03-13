@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/user-rewards",
+      "handler": "user-rewards.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/user-rewards/count",
+      "handler": "user-rewards.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/user-rewards/:id",
+      "handler": "user-rewards.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/user-rewards",
+      "handler": "user-rewards.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/user-rewards/:id",
+      "handler": "user-rewards.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/user-rewards/:id",
+      "handler": "user-rewards.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
