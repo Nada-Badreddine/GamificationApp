@@ -8,13 +8,16 @@ import CategoriesPage from '../pages/CategoriesPage';
 import UserInformation from '../pages/UserInformation';
 import TypeRewards from '../pages/TypeRewards';
 import FavorisPage from '../pages/FavorisPage';
+
 function RequireAuth() {
     const { isAuth } = useContext(UserContext);
+    console.log("first",isAuth);
     if (!isAuth) {
         return <Navigate to="/login" />;
     }
     return <Outlet />;
 }
+
 
 
 export default function AppRoutes() {
