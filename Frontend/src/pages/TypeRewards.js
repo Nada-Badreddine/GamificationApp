@@ -7,10 +7,6 @@ import Typography from '@mui/material/Typography';
 import { Col, Row, Container,Button   } from 'reactstrap';
 import {useQuery} from '@apollo/client'
 import {LOAD_TYPE_REWARDS} from './../services/TypeRewardsServices/getAllType'
-
-
-
-
 import './../styles/TypeRewards.css'
 const bull = (
   <Box

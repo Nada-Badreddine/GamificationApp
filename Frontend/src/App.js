@@ -7,7 +7,7 @@ import { setContext } from '@apollo/client/link/context';
 
 
 
-{/* 
+
 const errorLink =onError(({ graphqlErrors,networkError})=>{
   if(graphqlErrors){
     graphqlErrors.map(({
@@ -24,10 +24,10 @@ const client= new ApolloClient({
 }
 )
 
-*/}
 
 
-const params = {
+
+{/*const params = {
 	link: ApolloLink.from([
 		setContext((_, { headers }) => {
 			const token = localStorage.getItem("TOKEN");
@@ -45,9 +45,9 @@ const params = {
 		}),
 	]),
   cache: new InMemoryCache(),
-};
+};*/}
 
-const client = new ApolloClient(params);
+//const client = new ApolloClient(params);
 
 
 function App() {
@@ -55,6 +55,7 @@ function App() {
     <ApolloProvider client={client}>
     <>
       <AppRoutes />
+     
     </>
     </ApolloProvider>
   );

@@ -18,6 +18,7 @@ import UserContext from '../context/userContext';
 import LocalStorageService from './../utils/localStorageService'
 import {useMutation} from '@apollo/client'
 import {LOGIN_MUTATION} from './../services/loginService/loginMutation'
+import { useNavigate } from 'react-router-dom';
 function Copyright(props) {
 
     return (
@@ -46,7 +47,7 @@ function Copyright(props) {
 
 
 
-
+    const navigate = useNavigate();
     const { setIsAuth, setUserName, userName,setUserID} = useContext(UserContext);
     const [login,{ error }] =useMutation(LOGIN_MUTATION)
   
@@ -140,6 +141,7 @@ function Copyright(props) {
                 variant="contained" fullWidth type="submit"
                  
                   sx={{ mt: 3, mb: 2 }}
+                 
                 >
                   Sign In
                 </Button>

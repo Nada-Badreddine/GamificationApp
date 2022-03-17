@@ -8,6 +8,8 @@ import CategoriesPage from '../pages/CategoriesPage';
 import UserInformation from '../pages/UserInformation';
 import TypeRewards from '../pages/TypeRewards';
 import FavorisPage from '../pages/FavorisPage';
+import CartPage from '../pages/CartPage';
+import Home from '../pages/Home';
 
 function RequireAuth() {
     const { isAuth } = useContext(UserContext);
@@ -31,6 +33,8 @@ export default function AppRoutes() {
                 <Route exact path='/giftsbyCategory/:catgId' element={<GiftsByCategory  />} />
                  <Route exact path='/register' element={<Register />} />
                 <Route exact path='/login' element={<Login />} />
+                <Route exact path='/cart' element={<CartPage />} />
+                <Route exact path='/home' element={<Home />} />
                 <Route element={<RequireAuth />}>
                 </Route>
             </Routes>

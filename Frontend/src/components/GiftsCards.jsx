@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useContext,useState } from 'react';
 import Card from '@mui/material/Card';
 import { useParams } from "react-router";
 import CardActions from '@mui/material/CardActions';
@@ -15,6 +15,7 @@ import { useNavigate } from 'react-router-dom';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import IconButton from '@mui/material/IconButton';
 import { red } from '@mui/material/colors';
+import UserContext from '../context/userContext';
 
 function GiftsCards(props) {
     const params = useParams();
@@ -24,8 +25,9 @@ function GiftsCards(props) {
     const {loading: loadingFavoris,data: dataFavoris,refetch} = useQuery(LOAD_FAVORIS_BY_USER_ID, { variables: { id: userConecte }})
     const [deleteFavoris] = useMutation(DELETE_FAVORIS_MUTATION)
     const [createFavoris, { error }] = useMutation(CREATE_FAVORIS_MUTATION)
+    
    
-    const navigate = useNavigate();
+    
     const ApiUrl = 'http://localhost:1337'
 const formatListFavoris=(data) => {
 let favoriteList=[]
@@ -50,8 +52,11 @@ return favoriteList
       }
       refetch()
     }
-    console.log('first',dataFavoris)
+   
+ 
+    const { addToCart} = useContext(UserContext);
 
+    
     return (
         <>
       {data?.category?.gifts?.map((item) => {
@@ -59,7 +64,7 @@ return favoriteList
       const listFav=formatListFavoris(dataFavoris?.user?.favorises)
          const ExistingFavorite = listFav?.find((elem) => {
          
-          return elem.id === item?.id;
+          return elem?.id === item?.id;
         }
         );
            return(
@@ -110,8 +115,9 @@ return favoriteList
                             <FavoriteIcon color="disabled" />
                           </IconButton>
                         }
-                       
-                        <button  >Add to cart </button>
+                    
+                       <button onClick={() => {addToCart(item)}}>Add to cart</button>
+                    
                       </CardActions>
         </Card>
             )

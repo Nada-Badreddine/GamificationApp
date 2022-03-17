@@ -8,17 +8,11 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import {useQuery} from '@apollo/client'
 import {LOAD_FAVORIS_BY_USER_ID} from './../services/favorisServices/QueryFavoris'
-import {LOAD_FAVORIS} from './../services/favorisServices/QueryFavoris'
-import { useNavigate } from 'react-router-dom';
 
 function FavorisCards(props) {
 
     const userConecte = localStorage.getItem("USER_ID");
     const {error,loading,data} = useQuery(LOAD_FAVORIS_BY_USER_ID, { variables: { id: userConecte }})
-    
-  
-
-    console.log('first',data?.user?.favorises?.gifts)
     const ApiUrl = 'http://localhost:1337'
     return (
         <>
