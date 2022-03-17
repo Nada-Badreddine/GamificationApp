@@ -1,34 +1,30 @@
 import React, { useContext,useState } from 'react';
 import UserContext from '../context/userContext';
-
+import AddOrRemoveFromCart from './AddOrRemoveFromCart';
 const Cart = () => {
     const { cart,removeFromCart} = useContext(UserContext);
     console.log(cart)
-    if (cart.length === 0) {
-        return <p>cart is empty</p>;
-      }
-    return (
-        <>
-         <h2>your cart</h2>
 
-         {cart?.map((item) => {
+return(
+<>
+{cart.length <= 0 && <p>No Item in the Cart!</p>}
+
+{cart?.map((item) => {
 
 return (
 
-  <div> 
-      {item?.Name}
+  <div>
+     <strong>{item?.Name}</strong> - {item?.PointNumber} Points
   
-  <button onClick={() => {removeFromCart(item)}}>  remove from Cart</button>
-  </div> 
+  <AddOrRemoveFromCart item={item} />
+  </div>
 )})}
 
+</>
 
 
 
-        </>
-     
-    )}
-
+)}
 export default Cart
 
 

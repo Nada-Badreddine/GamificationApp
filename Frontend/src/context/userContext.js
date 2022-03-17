@@ -2,7 +2,6 @@ import React, { createContext, useState } from "react";
 
 
 
-
 const UserContext = createContext({
   isAuth: false,
   userName: "",
@@ -24,14 +23,67 @@ export const UserProvider = ({ children }) => {
 
 
     const addToCart = (item) => {
-      setCart([...cart, item]);
-    
+      setCart((prevCart) => {
+   
+          const cartItems = [...prevCart, {...item, quantity: 1}];
+          localStorage.setItem("cart",  JSON.stringify(cartItems))
+          return cartItems
+      })
+
+ 
+
+//     const updatedItemIndex = cart.findIndex(el => el.id===item?.id)
+
+  
+
+
+//  if (updatedItemIndex < 0) {
+//       cart.push({ ...item, quantity: 1 });
+//     } else {
+//       const updatedItem = {
+//         ...cart[updatedItemIndex]
+//       };
+//       updatedItem.quantity++;
+//       cart[updatedItemIndex] = updatedItem;
+//     }
+    }
+    const addProductQuantity = (item) => {
+      setCart((prevCart) => {
+          const cartItems = prevCart.map((cartItem) => {
+            if(cartItem.id === item.id) {
+              return {...cartItem, quantity: cartItem.quantity +1}
+            }
+            return cartItem
+          });
+          localStorage.setItem("cart",  JSON.stringify(cartItems))
+          return cartItems
+      })
+    }
+
+    const removeProductQuantity = (item) => {
+      setCart((prevCart) => {
+        const productInCart = prevCart.find((cartItem) => item.id === cartItem.id) 
+         if(!!productInCart && productInCart.quantity ===1) {
+           const filtredCart = prevCart.filter((it) => it.id !== item.id)
+           localStorage.setItem("cart",  JSON.stringify(filtredCart))
+           return filtredCart;
+         } else {
+          const cartItems = prevCart.map((cartItem) => {
+            if(cartItem.id === item.id) {
+              return {...cartItem, quantity: cartItem.quantity -1}
+            }
+            return cartItem
+          });
+          localStorage.setItem("cart",  JSON.stringify(cartItems))
+          return cartItems
+         }
+      })
     }
 
  //make cart a string and store in local space
- let stringCart = JSON.stringify(cart);
- localStorage.setItem("cart", stringCart)
- console.log("cart",cart)
+//  let stringCart = JSON.stringify(cart);
+//  localStorage.setItem("cart", stringCart)
+//  console.log("cart",cart)
 
 
     function getCartFromLocalStorage() {
@@ -60,8 +112,8 @@ export const UserProvider = ({ children }) => {
     getCartFromLocalStorage,
     addToCart,
     removeFromCart,
- 
-
+    addProductQuantity,
+    removeProductQuantity
   };
   
 

@@ -14,10 +14,26 @@ import Home from '../pages/Home';
 function RequireAuth() {
     const { isAuth } = useContext(UserContext);
     console.log("first",isAuth);
-    if (!isAuth) {
+
+     {/* 
+     if (!isAuth) {
         return <Navigate to="/login" />;
     }
     return <Outlet />;
+    
+    */}
+
+
+
+    isAuth ? (
+        
+        <Navigate replace to="/home" />
+      ) : (
+        <Navigate replace to="/login" />
+      )
+
+
+
 }
 
 

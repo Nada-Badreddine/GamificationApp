@@ -1,4 +1,4 @@
-import React, { useContext,useState } from 'react';
+import React, { useContext,memo } from 'react';
 import Card from '@mui/material/Card';
 import { useParams } from "react-router";
 import CardActions from '@mui/material/CardActions';
@@ -16,6 +16,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import IconButton from '@mui/material/IconButton';
 import { red } from '@mui/material/colors';
 import UserContext from '../context/userContext';
+import AddOrRemoveFromCart from './AddOrRemoveFromCart';
 
 function GiftsCards(props) {
     const params = useParams();
@@ -54,9 +55,8 @@ return favoriteList
     }
    
  
-    const { addToCart} = useContext(UserContext);
-
-    
+    const { addToCart,  cart} = useContext(UserContext);
+console.log("cartcartcartcart",cart)
     return (
         <>
       {data?.category?.gifts?.map((item) => {
@@ -115,9 +115,7 @@ return favoriteList
                             <FavoriteIcon color="disabled" />
                           </IconButton>
                         }
-                    
-                       <button onClick={() => {addToCart(item)}}>Add to cart</button>
-                    
+                    <AddOrRemoveFromCart item={item} />                    
                       </CardActions>
         </Card>
             )
@@ -125,4 +123,4 @@ return favoriteList
        </>
       );
     }
-    export default GiftsCards;
+    export default memo(GiftsCards);

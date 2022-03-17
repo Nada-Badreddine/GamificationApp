@@ -27,10 +27,15 @@ const RewardsUser = () => {
   const {error,loading,data} = useQuery(LOAD_REWARDS_BY_USER, { variables: { id: userConecte }})
   console.log("first",data?.user?.user_rewards)
 
-
-
+   const totalPoints = data?.user?.user_rewards.reduce((acc, curr) => {
+     console.log("currrrr", curr)
+     acc = acc + curr?.type_rewards.reduce((ac, cr) => ac + cr?.MaxPointNumber, 0)
+     return acc
+   }, 0)
+   console.log("total", totalPoints)
   return (
     <div>
+  <Typography   variant="body2">{totalPoints}</Typography>
       <Container >
 
 <Row>
@@ -45,29 +50,6 @@ const RewardsUser = () => {
               <Typography   variant="body2">
               <div key={item?.Description}>
   {item.type_rewards.map(itemRewards => {
-
-
-const sum = data
-
-
-
-    item.type_rewards.reduce( (sum, current) => sum + current, 0 );
-
-
-console.log(sum)
-{/*
- for(var i = 0, len = data.length; i < len; i++) {
-      somme += itemRewards?.MaxPointNumber[i];
-        //Iterate over your first array and then grab the second element add the values up
-  }
-  console.log("q",somme)
-
-  */}
-   
-   
-
-   
-   
 
   return(
     <>
