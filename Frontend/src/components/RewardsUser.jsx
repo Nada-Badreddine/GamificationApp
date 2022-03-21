@@ -1,6 +1,5 @@
 import {useQuery} from '@apollo/client'
 import {LOAD_REWARDS_BY_USER} from './../services/RewardsUserServices/QueryRewardsbyUser'
-
 import React,{useState} from 'react';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
@@ -9,8 +8,6 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { Col, Row, Container,Button   } from 'reactstrap';
 import './../styles/TypeRewards.css'
-
-
 
 const bull = (
   <Box
@@ -26,12 +23,8 @@ const RewardsUser = () => {
   const userConecte = localStorage.getItem("USER_ID");
   const {error,loading,data} = useQuery(LOAD_REWARDS_BY_USER, { variables: { id: userConecte }})
   console.log("first",data?.user?.user_rewards)
-
-   const totalPoints = data?.user?.user_rewards.reduce((acc, curr) => {
-     console.log("currrrr", curr)
-     acc = acc + curr?.type_rewards.reduce((ac, cr) => ac + cr?.MaxPointNumber, 0)
-     return acc
-   }, 0)
+   const totalPoints = data?.user?.user_rewards.reduce((acc, curr) =>  acc + curr?.type_rewards.reduce((ac, cr) => ac + cr?.MaxPointNumber, 0),
+ 0)
    console.log("total", totalPoints)
   return (
     <div>
