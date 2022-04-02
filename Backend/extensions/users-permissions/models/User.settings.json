@@ -66,6 +66,10 @@
     "user_rewards": {
       "via": "users_permissions_users",
       "collection": "user-rewards"
+    },
+    "orders": {
+      "via": "users_permissions_user",
+      "collection": "order"
     }
   }
 }

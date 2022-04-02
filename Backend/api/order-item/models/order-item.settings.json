@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "order_items",
+  "info": {
+    "name": "OrderItem"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "gift": {
+      "model": "gifts",
+      "via": "order_items"
+    },
+    "order": {
+      "model": "order",
+      "via": "order_items"
+    },
+    "quantity": {
+      "type": "integer"
+    }
+  }
+}

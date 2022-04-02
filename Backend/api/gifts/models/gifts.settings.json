@@ -40,6 +40,10 @@
     "favoris": {
       "via": "gifts",
       "model": "favoris"
+    },
+    "order_items": {
+      "via": "gift",
+      "collection": "order-item"
     }
   }
 }
