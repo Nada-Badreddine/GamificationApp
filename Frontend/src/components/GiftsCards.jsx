@@ -18,13 +18,11 @@ function GiftsCards(props) {
     data?.forEach(favoris => { favoriteList.push(favoris.gifts[0]) })
     return favoriteList
   }
+  const listFav = formatListFavoris(dataFavoris?.user?.favorises)
 
   return (
     <Box display="flex" gap={1} flexWrap="wrap" px={2}>
       {data?.category?.gifts?.map((item) => {
-        const listFav = formatListFavoris(dataFavoris?.user?.favorises)
-     
-
         return (
           <CardItem item={item} listFav={listFav} refetch={refetch} />
           // <Card key={item.id}>
