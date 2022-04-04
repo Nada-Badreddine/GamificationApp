@@ -8,6 +8,11 @@ export const LOAD_CATEGORIES = gql`
     Img {
       formats
     }
+    gifts {
+      Img {
+        formats
+      }
+    }
   }
 }
  `

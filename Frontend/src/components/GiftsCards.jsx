@@ -47,9 +47,11 @@ function GiftsCards(props) {
       return item?.Name.toLowerCase().includes(searchQuery.toLowerCase());
     }) ?? [];
 
-  if (loadingFavoris || loading) return <Box sx={{ display: 'flex' }}>
+  if (loadingFavoris || loading) {
+  return ( <Box sx={{ display: 'flex' }}>
     <CircularProgress />
-  </Box>
+  </Box>)
+  }
 
   return (
     <Box mt={10}>

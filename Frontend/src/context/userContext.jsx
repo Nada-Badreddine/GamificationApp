@@ -87,6 +87,11 @@ export function UserProvider({ children }) {
     setCart(hardCopy);
   };
 
+  const resetCart = () => {
+    setCart([])
+    localStorage.removeItem("cart")
+  }
+
   const updatedInitialState = {
     userName,
     id,
@@ -101,6 +106,7 @@ export function UserProvider({ children }) {
     removeFromCart,
     addProductQuantity,
     removeProductQuantity,
+    resetCart,
   };
 
   return (

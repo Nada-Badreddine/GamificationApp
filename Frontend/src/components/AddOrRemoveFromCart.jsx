@@ -20,7 +20,7 @@ function AddOrRemoveFromCart({ item }) {
               addProductQuantity(item);
             }}>+
           </Button>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
+          <Typography id="modal-modal-title" variant="h6" component="h2" px={1}>
             {productInCart.quantity}
           </Typography>
           <Button
