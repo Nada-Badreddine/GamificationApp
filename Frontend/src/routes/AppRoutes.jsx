@@ -3,8 +3,6 @@ import {
   Route,
   Routes,
   BrowserRouter,
-  Navigate,
-  Outlet,
 } from 'react-router-dom';
 import Register from '../pages/Register';
 import Login from '../pages/Login';
@@ -17,24 +15,16 @@ import FavorisPage from '../pages/FavorisPage';
 import CartPage from '../pages/CartPage';
 import Home from '../pages/Home';
 
-function RequireAuth() {
+function RequireAuth() { 
   const { isAuth } = useContext(UserContext);
-  console.log('first', isAuth);
 
-  {
-    /* 
-     if (!isAuth) {
-        return <Navigate to="/login" />;
+     if (!isAuth &&  window.location.pathname!=='/login' ) {
+       window.location.href="/login"
     }
-    return <Outlet />;
-    
-    */
-  }
-
-  isAuth ? <Navigate replace to="/home" /> : <Navigate replace to="/login" />;
 }
 
 export default function AppRoutes() {
+  RequireAuth()
   return (
     <BrowserRouter>
       <Routes>
@@ -51,7 +41,6 @@ export default function AppRoutes() {
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/cart" element={<CartPage />} />
         <Route exact path="/" element={<Home />} />
-        <Route element={<RequireAuth />}></Route>
       </Routes>
     </BrowserRouter>
   );

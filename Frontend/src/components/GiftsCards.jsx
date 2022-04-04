@@ -1,126 +1,77 @@
-import React, { useContext,memo } from 'react';
-import Card from '@mui/material/Card';
+import React, { memo } from 'react';
 import { useParams } from "react-router";
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import { useMutation, useQuery } from '@apollo/client'
-import {LOAD_GIFTS_BY_CATEGORY} from './../services/giftServices/QueryAllGifts'
-import {CREATE_FAVORIS_MUTATION} from './../services/favorisServices/MutationFavoris'
-import {DELETE_FAVORIS_MUTATION} from './../services/favorisServices/MutationFavoris'
-import {LOAD_FAVORIS_BY_USER_ID} from './../services/favorisServices/QueryFavoris'
-import { useNavigate } from 'react-router-dom';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import IconButton from '@mui/material/IconButton';
-import { red } from '@mui/material/colors';
-import UserContext from '../context/userContext';
-import AddOrRemoveFromCart from './AddOrRemoveFromCart';
+import Box from '@mui/material/Box';
+import { useQuery } from '@apollo/client'
+import { LOAD_GIFTS_BY_CATEGORY } from './../services/giftServices/QueryAllGifts'
+import { LOAD_FAVORIS_BY_USER_ID } from './../services/favorisServices/QueryFavoris'
+import CardItem from '../components/Card';
 
 function GiftsCards(props) {
-    const params = useParams();
-    const current = params.catgId;
-    const userConecte = localStorage.getItem("USER_ID");
-    const { loading, data } =  useQuery(LOAD_GIFTS_BY_CATEGORY, { variables: { id :current }});
-    const {loading: loadingFavoris,data: dataFavoris,refetch} = useQuery(LOAD_FAVORIS_BY_USER_ID, { variables: { id: userConecte }})
-    const [deleteFavoris] = useMutation(DELETE_FAVORIS_MUTATION)
-    const [createFavoris, { error }] = useMutation(CREATE_FAVORIS_MUTATION)
-    
-   
-    
-    const ApiUrl = 'http://localhost:1337'
-const formatListFavoris=(data) => {
-let favoriteList=[]
-data?.forEach(favoris =>{favoriteList.push(favoris.gifts[0])})
-return favoriteList
+  const params = useParams();
+  const current = params.catgId;
+  const userConecte = localStorage.getItem("USER_ID");
+  const { loading, data } = useQuery(LOAD_GIFTS_BY_CATEGORY, { variables: { id: current } });
+  const { loading: loadingFavoris, data: dataFavoris, refetch } = useQuery(LOAD_FAVORIS_BY_USER_ID, { variables: { id: userConecte } })
 
-}
-    const AddToFavoris = (item) => {
-      createFavoris(
-        {
-          variables: {
-            input: { data:{gifts: item.id,  users_permissions_users: userConecte} },
+  const formatListFavoris = (data) => {
+    let favoriteList = []
+    data?.forEach(favoris => { favoriteList.push(favoris.gifts[0]) })
+    return favoriteList
+  }
 
-  
-           
-          }
-
-        } 
-      ) 
-      if (error) {
-        console.log(error)
-      }
-      refetch()
-    }
-   
- 
-    const { addToCart,  cart} = useContext(UserContext);
-console.log("cartcartcartcart",cart)
-    return (
-        <>
+  return (
+    <Box display="flex" gap={1} flexWrap="wrap" px={2}>
       {data?.category?.gifts?.map((item) => {
-        
-      const listFav=formatListFavoris(dataFavoris?.user?.favorises)
-         const ExistingFavorite = listFav?.find((elem) => {
-         
-          return elem?.id === item?.id;
-        }
-        );
-           return(
-           <Card key={item.id}>
-               <div style={{ display: 'flex' }}>
-               <div  style={{  width: '176px' }} >
-                   <img src={ ApiUrl +item?.Img[0]?.formats?.thumbnail?.url}  alt="Logo" />
+        const listFav = formatListFavoris(dataFavoris?.user?.favorises)
+     
 
-                   </div>
-                 
-            
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              {item?.Name}
-            
-            </Typography>
-          
-            <Typography variant="body2" color="text.secondary">
-            {item?.Description}
-            <br/>
-            {item?.PointNumber} Point
-            </Typography>
-          </CardContent>
-          </div>
-          <CardActions disableSpacing >
-          {ExistingFavorite ?
-                          <IconButton aria-label="add to favorites"
-                            onClick={
+        return (
+          <CardItem item={item} listFav={listFav} refetch={refetch} />
+          // <Card key={item.id}>
+          //   <div style={{ display: 'flex' }}>
+          //     <div style={{ width: '176px' }} >
+          //       <img src={ApiUrl + item?.Img[0]?.formats?.thumbnail?.url} alt="Logo" />
+          //     </div>
+          //     <CardContent>
+          //       <Typography gutterBottom variant="h5" component="div">
+          //         {item?.Name}
+          //       </Typography>
+          //       <Typography variant="body2" color="text.secondary">
+          //         {item?.Description}
+          //         <br />
+          //         {item?.PointNumber} Point
+          //       </Typography>
+          //     </CardContent>
+          //   </div>
+          //   <CardActions disableSpacing >
+          //     {ExistingFavorite ?
+          //       <IconButton aria-label="add to favorites"
+          //         onClick={
+          //           () => {
+          //             deleteFavoris(
+          //               {
+          //                 variables: { where: { "id": item?.id } },
 
-                              () =>{
+          //               }
+          //             )
+          //             refetch()
+          //           }
+          //         }
+          //       >
+          //         <FavoriteIcon sx={{ color: red[500] }} />
+          //       </IconButton>
+          //       :
+          //       <IconButton aria-label="add to favorites" onClick={() => AddToFavoris(item)} >
+          //         <FavoriteIcon color="disabled" />
+          //       </IconButton>
+          //     }
+          //     <AddOrRemoveFromCart item={item} />
+          //   </CardActions>
+          // </Card>
+        )
+      })}
+    </Box>
+  );
+}
 
-                              
-                              deleteFavoris(
-                                  {
-                                    variables: { where: {"id": item?.id} },
-                                   
-                                  }
-                                )
-                                refetch()
-                              }
-                            }
-                            
-                          >
-                            <FavoriteIcon sx={{ color: red[500] }} />
-                          </IconButton>
-                          :
-                          <IconButton aria-label="add to favorites" onClick={() => AddToFavoris(item)} >
-                            <FavoriteIcon color="disabled" />
-                          </IconButton>
-                        }
-                    <AddOrRemoveFromCart item={item} />                    
-                      </CardActions>
-        </Card>
-            )
-            })}
-       </>
-      );
-    }
-    export default memo(GiftsCards);
+export default memo(GiftsCards);

@@ -1,5 +1,8 @@
 import React, { useContext, memo } from 'react';
 import UserContext from '../context/userContext';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
 function AddOrRemoveFromCart({ item }) {
   const { addToCart, cart, addProductQuantity, removeProductQuantity } =
@@ -7,34 +10,38 @@ function AddOrRemoveFromCart({ item }) {
   const productInCart = cart.find((cartItem) => item.id === cartItem.id);
   const isProductExistInCart = !!productInCart;
   return (
-    <>
+    <Box >
       {isProductExistInCart && (
         <div className="d-flex">
-          <button
-            type="button"
+          <Button
+            color="success"
+            variant="contained"
             onClick={() => {
               addProductQuantity(item);
-            }}
-          >
-            +
-          </button>
-          <p>{productInCart.quantity}</p>
-          <button type="button" onClick={() => removeProductQuantity(item)}>
-            -
-          </button>
+            }}>+
+          </Button>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            {productInCart.quantity}
+          </Typography>
+          <Button
+            color="error"
+            variant="contained"
+            onClick={() => {
+              removeProductQuantity(item);
+            }}>-
+          </Button>
         </div>
       )}
       {!isProductExistInCart && (
-        <button
-          type="button"
+        <Button
+          color="success"
+          variant="contained"
           onClick={() => {
             addToCart(item);
-          }}
-        >
-          Add to cart
-        </button>
+          }}>Add to cart
+        </Button>
       )}
-    </>
+    </Box>
   );
 }
 export default memo(AddOrRemoveFromCart);
