@@ -20,11 +20,11 @@ export default function RecipeReviewCard({ item, refetch, listFav }) {
                 width="194"
             />
             <CardContent>
-                <Box style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <Box display='flex' justifyContent='space-between' alignItems='center'>
                     <Typography variant="body2" color="text.primary">
                         {item?.Name}
                     </Typography>
-                    <Badge badgeContent={4} color="primary" />
+                    <Badge badgeContent={item?.PointNumber} color="primary" max={1000000}/>
                 </Box>
                 <Typography variant="body2" color="text.secondary" mt={1}>
                     {item?.Description}
