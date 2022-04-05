@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Grid, Badge, IconButton, Button, AppBar, Toolbar, Box, MenuItem, Menu, Avatar } from "@material-ui/core"
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import UserContext from '../context/userContext';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 const useStyles = makeStyles((theme) => ({
 
@@ -83,29 +84,41 @@ const Header = () => {
                 <Avatar src="https://uploads.codesandbox.io/uploads/user/3e41a372-fc65-4387-bca0-70a050914db8/VIR9-logo.jpg" className={classes.avatar} />
               </Button>
             </Grid>
-            <Button color="inherit" onClick={() => navigate('/')}  className={classes.buttonFontSize}>Home</Button>
-            <Button color="inherit" onClick={() => navigate('/pageCategories')}  className={classes.buttonFontSize}>Categories</Button>
-            <Button color="inherit" onClick={() => navigate('/typeRewards')}  className={classes.buttonFontSize}>Rewards</Button>
-            <Button color="inherit" onClick={() => navigate('/userInformation')}  className={classes.buttonFontSize}>Profile</Button>
-            <Button color="inherit" onClick={() => navigate('/FavorisPage')}  className={classes.buttonFontSize}>Favoris</Button>
-            <Button color="inherit" onClick={handleMenu} className={classes.buttonFontSize}>Discover</Button>
+            <Button color="inherit" onClick={() => navigate('/')} className={classes.buttonFontSize}>Home</Button>
+            <Button color="inherit" onClick={() => navigate('/pageCategories')} className={classes.buttonFontSize}>Categories</Button>
+            <Button color="inherit" onClick={() => navigate('/typeRewards')} className={classes.buttonFontSize}>Rewards</Button>
+            <Button color="inherit" onClick={handleMenu} className={classes.buttonFontSize}>Profil</Button>
             <Menu
               id="menu-appbar"
               anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              style={{ marginTop: '30px', marginLeft: '60px'}}
               anchorOrigin={{
-                vertical: 'top',
+                vertical: 'bottom',
                 horizontal: 'right',
               }}
               transformOrigin={{
-                vertical: 'top',
+                vertical: 'bottom',
                 horizontal: 'right',
               }}
-              open={open}
-              onClose={handleClose}
             >
-              <MenuItem onClick={handleClose}>Profile</MenuItem>
-              <MenuItem onClick={handleClose}>My account</MenuItem>
+              <MenuItem onClick={() =>{ navigate('/userInformation' )
+              handleClose()
+            }}>Profile</MenuItem>
+              <MenuItem onClick={handleClose}>Commandes</MenuItem>
+              <MenuItem onClick={() => {
+                localStorage.clear();
+                window.location.replace("/");
+              }}>Deconnexion</MenuItem>
             </Menu>
+            <IconButton
+              size="large"
+              aria-label="show 17 new notifications"
+              color="inherit"
+            >
+              <FavoriteBorderIcon onClick={() => navigate('/FavorisPage')} />
+            </IconButton>
             <IconButton
               size="large"
               aria-label="show 17 new notifications"
@@ -115,12 +128,6 @@ const Header = () => {
                 <ShoppingCartIcon onClick={() => navigate('/cart')} />
               </Badge>
             </IconButton>
-            <Button color="inherit" className={[classes.buttonFontSize, classes.loginButton]}
-              onClick={() => {
-                localStorage.clear();
-                window.location.replace("/");
-              }}
-            >Deconnexion</Button>
           </Toolbar>
         </Grid>
       </AppBar>

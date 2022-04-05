@@ -12,7 +12,7 @@ function AddOrRemoveFromCart({ item }) {
   return (
     <Box >
       {isProductExistInCart && (
-        <div className="d-flex">
+        <Box display="flex" alignItems="center">
           <Button
             color="success"
             variant="contained"
@@ -30,7 +30,7 @@ function AddOrRemoveFromCart({ item }) {
               removeProductQuantity(item);
             }}>-
           </Button>
-        </div>
+        </Box>
       )}
       {!isProductExistInCart && (
         <Button

@@ -19,6 +19,7 @@ import formatListFavoris from '../utils/formatListFavoris';
 
 const Cart = () => {
   const { cart, resetCart } = useContext(UserContext);
+  console.log("cart", cart)
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -71,29 +72,30 @@ const Cart = () => {
 
   if (loadingFavoris) {
     return (
-    <Box sx={{ display: 'flex', justifyContent:"center" }}>
-      <CircularProgress />
-    </Box>
-  )
+      <Box sx={{ display: 'flex', justifyContent: "center" }}>
+        <CircularProgress />
+      </Box>
+    )
   }
 
   return (
-    <>
+    <Box px={2}>
       {cart.length <= 0 && <p>No Item in the Cart!</p>}
-      <Box display="flex" gap={1} flexWrap="wrap" px={2}>
-        {cart?.map((item) => {
-          return (
-            <CardItem item={item} listFav={listFav} refetch={refetch} />
-          );
-        })}
-      </Box>
-      <ConfirmOrderModal
+      {cart.length > 0 &&
+       <ConfirmOrderModal
         AddGiftToOrderLine={AddGiftToOrderLine}
         open={open}
         handleClickOpen={handleClickOpen}
         handleClose={handleClose}
-      />
-    </>
+      />}
+      <Box display="flex" gap={1} flexWrap="wrap" px={2} justifyContent="center">
+        {cart?.map((item) => {
+          return (
+            <CardItem item={item} listFav={listFav} refetch={refetch} width={350} />
+          );
+        })}
+      </Box>
+    </Box>
   );
 };
 export default Cart;

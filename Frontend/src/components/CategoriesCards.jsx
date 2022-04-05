@@ -138,7 +138,7 @@ const useStyles = makeStyles(() => ({
   avatar: {
     fontFamily: 'Ubuntu',
     fontSize: '0.875rem',
-    backgroundColor: '#6d7efc',
+    backgroundColor: '#6d7efc !important',
   },
   join: {
     background: 'linear-gradient(to top, #638ef0, #82e7fe)',
@@ -223,7 +223,6 @@ export const TeamCardDemo = React.memo(function TeamCard() {
           return (
             <Grid item xs={12} md={6} lg={4}>
               <CustomCard
-                joined
                 gifts={item.gifts}
                 thumbnail={
                   ApiUrl + item?.Img[0]?.formats?.thumbnail?.url

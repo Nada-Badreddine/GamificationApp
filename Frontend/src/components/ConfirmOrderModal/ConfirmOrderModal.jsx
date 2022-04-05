@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
+import Box from '@mui/material/Box';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
 
@@ -12,9 +13,12 @@ export default function ConfirmOrderModal({
 }) {
     return (
         <div>
+<Box display="flex" flexDirection="row-reverse" mb={2}>
+
             <Button variant="outlined" onClick={handleClickOpen}>
                 Commander
             </Button>
+</Box>
             <Dialog
                 fullWidth={"lg"}
                 open={open}

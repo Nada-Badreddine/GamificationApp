@@ -9,9 +9,9 @@ import Typography from '@mui/material/Typography';
 import AddOrRemoveFromCart from '../AddOrRemoveFromCart';
 import AddOrRemoveFromFavoriteList from '../AddOrRemoveFromFavoriteList';
 
-export default function RecipeReviewCard({ item, refetch, listFav }) {
+export default function RecipeReviewCard({ item, refetch, listFav, width }) {
     return (
-        <Card sx={{ width: 230 }}>
+        <Card sx={{ width: width ?? 230 }}>
             <CardMedia
                 component="img"
                 height="194"
