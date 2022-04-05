@@ -8,6 +8,8 @@ import { Col, Row, Container, Button } from 'reactstrap';
 import { useQuery } from '@apollo/client';
 import { LOAD_TYPE_REWARDS } from './../services/TypeRewardsServices/getAllType';
 import Header from './../components/Header';
+import Footer from '../components/Footer';
+
 import './../styles/TypeRewards.css';
 const bull = (
   <Box
@@ -56,6 +58,7 @@ const TypeRewards = () => {
           })}
         </Row>
       </Container>
+      <Footer />
     </div>
   );
 };
