@@ -88,6 +88,7 @@ import { Column, Row, Item } from '@mui-treasury/components/flex';
 import { Info, InfoSubtitle, InfoTitle } from '@mui-treasury/components/info';
 import { useApexInfoStyles } from '@mui-treasury/styles/info/apex';
 import { useGraphicBtnStyles } from '@mui-treasury/styles/button/graphic';
+import { useNavigate } from 'react-router-dom';
 
 import CircularProgress from '@mui/material/CircularProgress';
 import { useQuery } from '@apollo/client'
@@ -158,6 +159,7 @@ const CustomCard = ({
 }) => {
   const styles = useStyles();
   const btnStyles = useGraphicBtnStyles();
+  const navigate = useNavigate();
 
   return (
     <div className={styles.root}>
@@ -197,7 +199,7 @@ const CustomCard = ({
               color={'primary'}
               disableRipple
               disabled={gifts.length ===0}
-              onClick={() => window.location.replace('/giftsbyCategory/' + id)}
+              onClick={() => navigate('/giftsbyCategory/' + id)}
             >
               see gifts
             </Button>

@@ -116,16 +116,18 @@ const Header = () => {
               size="large"
               aria-label="show 17 new notifications"
               color="inherit"
+              onClick={() => navigate('/FavorisPage')}
             >
-              <FavoriteBorderIcon onClick={() => navigate('/FavorisPage')} />
+              <FavoriteBorderIcon />
             </IconButton>
             <IconButton
+            onClick={() => navigate('/cart')} 
               size="large"
               aria-label="show 17 new notifications"
               color="inherit"
             >
               <Badge badgeContent={cart.length} color="error">
-                <ShoppingCartIcon onClick={() => navigate('/cart')} />
+                <ShoppingCartIcon />
               </Badge>
             </IconButton>
           </Toolbar>
