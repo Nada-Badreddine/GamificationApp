@@ -9,6 +9,7 @@ import CardItem from '../components/Card';
 import ConfirmOrderModal from '../components/ConfirmOrderModal'
 import { ADD_GIFTS_TO_LINE_MUTATION } from './../services/orderServices/MutationOrderLine';
 import { LOAD_FAVORIS_BY_USER_ID } from './../services/favorisServices/QueryFavoris'
+import formatListFavoris from '../utils/formatListFavoris';
 
 // commande =>  total, status,userId, id 1
 // commandeItem commandId 1, quantity 3, giftId 1
@@ -65,17 +66,12 @@ const Cart = () => {
     resetCart()
   };
 
-  const formatListFavoris = (data) => {
-    let favoriteList = []
-    data?.forEach(favoris => { favoriteList.push(favoris.gifts[0]) })
-    return favoriteList
-  }
   const { loading: loadingFavoris, data: dataFavoris, refetch } = useQuery(LOAD_FAVORIS_BY_USER_ID, { variables: { id: userConecte } })
-  const listFav = formatListFavoris(dataFavoris?.user?.favorises)
+  const listFav = formatListFavoris(dataFavoris?.user?.favorises ?? [])
 
   if (loadingFavoris) {
     return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex', justifyContent:"center" }}>
       <CircularProgress />
     </Box>
   )

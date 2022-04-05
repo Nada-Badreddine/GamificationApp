@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 import { Col, Row, Container, Button } from 'reactstrap';
 import { useQuery } from '@apollo/client';
 import { LOAD_TYPE_REWARDS } from './../services/TypeRewardsServices/getAllType';
+import Header from './../components/Header';
 import './../styles/TypeRewards.css';
 const bull = (
   <Box
@@ -23,6 +24,7 @@ const TypeRewards = () => {
 
   return (
     <div>
+      <Header />
       <h3>Des récompenses pour chaque occasion</h3>
       <Container>
         <Row>

@@ -211,7 +211,7 @@ const CustomCard = ({
 export const TeamCardDemo = React.memo(function TeamCard() {
   const { loading, data } = useQuery(LOAD_CATEGORIES)
 
-  if (loading) return <Box sx={{ display: 'flex' }}>
+  if (loading) return <Box sx={{ display: 'flex', justifyContent:"center" }}>
     <CircularProgress />
   </Box>
 

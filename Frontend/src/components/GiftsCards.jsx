@@ -10,6 +10,7 @@ import CardItem from '../components/Card';
 import SearchBar from '../components/SearchBar';
 import Grid from '@mui/material/Grid';
 import Filters from '../components/Filters';
+import formatListFavoris from '../utils/formatListFavoris';
 
 function GiftsCards(props) {
   const params = useParams();
@@ -24,11 +25,6 @@ function GiftsCards(props) {
   const { loading, data } = useQuery(LOAD_GIFTS_BY_CATEGORY, { variables: { id: current } });
   const { loading: loadingFavoris, data: dataFavoris, refetch } = useQuery(LOAD_FAVORIS_BY_USER_ID, { variables: { id: userConecte } })
 
-  const formatListFavoris = (data) => {
-    let favoriteList = []
-    data?.forEach(favoris => { favoriteList.push(favoris.gifts[0]) })
-    return favoriteList
-  }
   const handleChangeSearch = (value) => {
     setSearch(value);
   };
@@ -38,7 +34,7 @@ function GiftsCards(props) {
     if (pointFilter === "between100And400") return point >= 100 && point <= 400
     return point > 400
   }
-  const listFav = formatListFavoris(dataFavoris?.user?.favorises)
+  const listFav = formatListFavoris(dataFavoris?.user?.favorises ?? [])
   const filtredItems =
     data?.category?.gifts?.filter((item) => {
       if (pointFilter) {
@@ -48,13 +44,13 @@ function GiftsCards(props) {
     }) ?? [];
 
   if (loadingFavoris || loading) {
-  return ( <Box sx={{ display: 'flex' }}>
+  return ( <Box sx={{ display: 'flex', justifyContent:"center" }}>
     <CircularProgress />
   </Box>)
   }
 
   return (
-    <Box mt={10}>
+    <Box mt={2}>
       <Grid container spacing={2}>
         <Grid item xs={2}>
           <Filters pointFilter={pointFilter} handleChange={handleChange} />
