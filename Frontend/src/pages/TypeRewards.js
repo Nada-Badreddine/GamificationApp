@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { Col, Row, Container, Button } from 'reactstrap';
+import { Col, Row, Container } from 'reactstrap';
 import { useQuery } from '@apollo/client';
 import { LOAD_TYPE_REWARDS } from './../services/TypeRewardsServices/getAllType';
 import Header from './../components/Header';
 import Footer from '../components/Footer';
+import CircularProgress from '@mui/material/CircularProgress';
 
 import './../styles/TypeRewards.css';
 const bull = (
@@ -21,21 +21,27 @@ const bull = (
 );
 
 const TypeRewards = () => {
-  const [rewardsTypes, setRewardsTypes] = useState([]);
   const { loading, data } = useQuery(LOAD_TYPE_REWARDS);
 
+  if (loading) {
+    return ( <Box sx={{ display: 'flex', justifyContent:"center" }}>
+      <CircularProgress />
+    </Box>)
+    }
+
   return (
-    <div>
+    <Box backgroundColor='#efece9'>
       <Header />
       <h3>Des récompenses pour chaque occasion</h3>
-      <Container>
+      <Box mb={2}>
+      <Container >
         <Row>
           {data?.typeRewards?.map((item) => {
             return (
               <Col xs="12" md="4">
                 <Card
                   style={{
-                    backgroundColor: 'rgb(191 191 191 / 6%)',
+                    backgroundColor: "#fff",
                     height: '290px',
                   }}
                 >
@@ -44,6 +50,7 @@ const TypeRewards = () => {
                       <img
                         src="https://assets-global.website-files.com/60080cdf80021f5e4cc61c9b/61533720e9211f738a3d8912_Automate.svg"
                         className="icon-sequence"
+                        alt=""
                       />
                     </div>
                     <Typography variant="body2">
@@ -58,8 +65,9 @@ const TypeRewards = () => {
           })}
         </Row>
       </Container>
+      </Box>
       <Footer />
-    </div>
+    </Box>
   );
 };
 

@@ -8,6 +8,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { Col, Row, Container, Button } from 'reactstrap';
 import './../styles/TypeRewards.css'
+import CircularProgress from '@mui/material/CircularProgress';
 
 const bull = (
   <Box
@@ -21,24 +22,30 @@ const bull = (
 const RewardsUser = () => {
 
   const userConecte = localStorage.getItem("USER_ID");
-  const { error, loading, data } = useQuery(LOAD_REWARDS_BY_USER, { variables: { id: userConecte } })
+  const { loading, data } = useQuery(LOAD_REWARDS_BY_USER, { variables: { id: userConecte } })
   console.log("first", data?.user?.user_rewards)
   const totalPoints = data?.user?.user_rewards.reduce((acc, curr) => acc + curr?.type_rewards.reduce((ac, cr) => ac + cr?.MaxPointNumber, 0),
     0)
-  console.log("total", totalPoints)
+
+  if (loading) {
+    return (<Box sx={{ display: 'flex', justifyContent: "center" }}>
+      <CircularProgress />
+    </Box>
+    )
+  }
+
   return (
     <div>
-      <Typography variant="body2">{totalPoints}</Typography>
+      <Typography variant="body2">Total points: {totalPoints}</Typography>
       <Container >
-
         <Row>
           {data?.user?.user_rewards.map((item) => {
             return (
               <Col xs='12' md='4' >
-                <Card style={{ backgroundColor: 'rgb(191 191 191 / 6%)', height: '290px' }} >
+                <Card style={{ backgroundColor: "#fff", height: '290px' }} >
                   <CardContent>
                     <div className="icon-sequence-bg">
-                      <img src="https://assets-global.website-files.com/60080cdf80021f5e4cc61c9b/61533720e9211f738a3d8912_Automate.svg" className="icon-sequence" />
+                      <img src="https://assets-global.website-files.com/60080cdf80021f5e4cc61c9b/61533720e9211f738a3d8912_Automate.svg" className="icon-sequence" alt="" />
                     </div>
                     <Typography variant="body2">
                       <div key={item?.Description}>
