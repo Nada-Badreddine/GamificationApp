@@ -14,6 +14,8 @@ import TypeRewards from '../pages/TypeRewards';
 import FavorisPage from '../pages/FavorisPage';
 import CartPage from '../pages/CartPage';
 import Home from '../pages/Home';
+import ConfirmationOrder from '../pages/ConfirmationOrder';
+import Orders from '../pages/Orders';
 
 function RequireAuth() { 
   const { isAuth } = useContext(UserContext);
@@ -41,6 +43,8 @@ export default function AppRoutes() {
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/cart" element={<CartPage />} />
         <Route exact path="/" element={<Home />} />
+        <Route exact path="/confirmationOrder" element={<ConfirmationOrder />} />
+        <Route exact path="/orders" element={<Orders />} />
       </Routes>
     </BrowserRouter>
   );

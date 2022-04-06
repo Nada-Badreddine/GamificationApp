@@ -70,6 +70,12 @@
     "orders": {
       "via": "users_permissions_user",
       "collection": "order"
+    },
+    "birthDay": {
+      "type": "date"
+    },
+    "job": {
+      "type": "string"
     }
   }
 }

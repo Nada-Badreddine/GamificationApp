@@ -16,9 +16,9 @@
       "via": "favoris"
     },
     "users_permissions_users": {
+      "via": "favorises",
       "plugin": "users-permissions",
       "collection": "user",
-      "via": "favorises",
       "dominant": true
     }
   }

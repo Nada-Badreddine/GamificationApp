@@ -16,13 +16,16 @@
       "type": "integer"
     },
     "users_permissions_user": {
+      "via": "orders",
       "plugin": "users-permissions",
-      "model": "user",
-      "via": "orders"
+      "model": "user"
     },
     "order_items": {
       "via": "order",
       "collection": "order-item"
+    },
+    "status": {
+      "type": "string"
     }
   }
 }

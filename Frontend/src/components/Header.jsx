@@ -106,7 +106,7 @@ const Header = () => {
               <MenuItem onClick={() =>{ navigate('/userInformation' )
               handleClose()
             }}>Profile</MenuItem>
-              <MenuItem onClick={handleClose}>Commandes</MenuItem>
+              <MenuItem onClick={() => navigate('/orders')}>Commandes</MenuItem>
               <MenuItem onClick={() => {
                 localStorage.clear();
                 window.location.replace("/");

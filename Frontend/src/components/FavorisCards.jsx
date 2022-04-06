@@ -6,13 +6,13 @@ import { LOAD_FAVORIS_BY_USER_ID } from './../services/favorisServices/QueryFavo
 import formatListFavoris from '../utils/formatListFavoris';
 import CardItem from '../components/Card';
 
-function FavorisCards(props) {
+function FavorisCards() {
   const userConecte = localStorage.getItem("USER_ID");
   const { loading, data, refetch } = useQuery(LOAD_FAVORIS_BY_USER_ID, { variables: { id: userConecte } })
   const listFav = formatListFavoris(data?.user?.favorises ?? [])
 
   
-  if ( loading) {
+  if (loading) {
     return ( <Box sx={{ display: 'flex', justifyContent:"center" }}>
       <CircularProgress />
     </Box>)

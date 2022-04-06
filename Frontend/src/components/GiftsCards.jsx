@@ -13,7 +13,7 @@ import Grid from '@mui/material/Grid';
 import Filters from '../components/Filters';
 import formatListFavoris from '../utils/formatListFavoris';
 
-function GiftsCards(props) {
+function GiftsCards() {
   const params = useParams();
   const current = params.catgId;
   const [searchQuery, setSearch] = useState('');
@@ -57,7 +57,7 @@ function GiftsCards(props) {
           {data?.category?.Name}
         </Typography>
       </Box>
-      <Grid container spacing={2}>
+      <Grid container >
         <Grid item xs={2}>
           <Filters pointFilter={pointFilter} handleChange={handleChange} />
         </Grid>

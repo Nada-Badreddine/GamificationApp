@@ -16,9 +16,9 @@
       "type": "richtext"
     },
     "users_permissions_users": {
+      "via": "user_rewards",
       "plugin": "users-permissions",
       "collection": "user",
-      "via": "user_rewards",
       "dominant": true
     },
     "type_rewards": {

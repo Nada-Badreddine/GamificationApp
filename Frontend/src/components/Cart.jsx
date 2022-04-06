@@ -13,6 +13,7 @@ import formatListFavoris from '../utils/formatListFavoris';
 import { makeStyles } from '@material-ui/core/styles';
 import AddOrRemoveFromFavoriteList from "../components/AddOrRemoveFromFavoriteList"
 import AddOrRemoveFromCart from "../components/AddOrRemoveFromCart"
+import { useNavigate } from 'react-router-dom';
 
 // commande =>  total, status,userId, id 1
 // commandeItem commandId 1, quantity 3, giftId 1
@@ -60,7 +61,7 @@ const Cart = () => {
   const { cart, resetCart } = useContext(UserContext);
   const classes = useStyles();
   const [open, setOpen] = useState(false);
-
+  const navigate = useNavigate();
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -82,7 +83,7 @@ const Cart = () => {
     createOrder({
       variables: {
         input: {
-          data: { TotalCart: totalPoints, users_permissions_user: userConecte },
+          data: { TotalCart: totalPoints, users_permissions_user: userConecte, status: 'inProgress' },
         },
       },
       onCompleted: async (dataOrder) => {
@@ -104,6 +105,7 @@ const Cart = () => {
   const AddGiftToOrderLine = () => {
     AddOrder();
     resetCart()
+    navigate("/confirmationOrder")
   };
 
   const { loading: loadingFavoris, data: dataFavoris, refetch } = useQuery(LOAD_FAVORIS_BY_USER_ID, { variables: { id: userConecte } })

@@ -16,8 +16,8 @@
       "via": "order_items"
     },
     "order": {
-      "model": "order",
-      "via": "order_items"
+      "via": "order_items",
+      "model": "order"
     },
     "quantity": {
       "type": "integer"
