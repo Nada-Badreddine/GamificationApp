@@ -13,12 +13,20 @@ export default function ConfirmOrderModal({
 }) {
     return (
         <div>
-<Box display="flex" flexDirection="row-reverse" mb={2}>
+            <Box display="flex" flexDirection="row-reverse" mb={2}>
+                <Button
+                    style={{
+                        background: "#333",
+                        color: " #fff",
+                        fontFamily: "function-bold,Arial,sans-serif",
+                        textDecoration: 'none'
+                    }}
+                    color="info"
+                    variant="contained"
+                    onClick={handleClickOpen}>Commander
+                </Button>
 
-            <Button variant="outlined" onClick={handleClickOpen}>
-                Commander
-            </Button>
-</Box>
+            </Box>
             <Dialog
                 fullWidth={"lg"}
                 open={open}

@@ -4,7 +4,7 @@ import { CREATE_FAVORIS_MUTATION } from '../../services/favorisServices/Mutation
 import { DELETE_FAVORIS_MUTATION } from '../../services/favorisServices/MutationFavoris'
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import IconButton from '@mui/material/IconButton';
-import { red } from '@mui/material/colors';
+import { common, grey } from '@mui/material/colors';
 
 function AddOrRemoveFromFavoriteList({ gift, listFav, refetch }) {
     const userConecte = localStorage.getItem("USER_ID");
@@ -43,11 +43,11 @@ function AddOrRemoveFromFavoriteList({ gift, listFav, refetch }) {
                         }
                     }
                 >
-                    <FavoriteIcon sx={{ color: red[500] }} />
+                    <FavoriteIcon sx={{ color: common["black"] }} />
                 </IconButton>
                 :
                 <IconButton aria-label="add to favorites" onClick={() => AddToFavoris()} >
-                    <FavoriteIcon color="disabled" />
+                    <FavoriteIcon sx={{ color: grey[300] }} />
                 </IconButton>
             }
 

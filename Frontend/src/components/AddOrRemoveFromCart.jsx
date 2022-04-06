@@ -14,8 +14,14 @@ function AddOrRemoveFromCart({ item }) {
       {isProductExistInCart && (
         <Box display="flex" alignItems="center">
           <Button
-            color="success"
-            variant="contained"
+            style={{
+              background: "#333",
+              color: " #fff",
+              fontFamily: "function-bold,Arial,sans-serif",
+              textDecoration: 'none'
+            }}
+            variant="outlined"
+            size="small"
             onClick={() => {
               addProductQuantity(item);
             }}>+
@@ -24,8 +30,9 @@ function AddOrRemoveFromCart({ item }) {
             {productInCart.quantity}
           </Typography>
           <Button
+            size="small"
             color="error"
-            variant="contained"
+            variant="outlined"
             onClick={() => {
               removeProductQuantity(item);
             }}>-
@@ -34,7 +41,13 @@ function AddOrRemoveFromCart({ item }) {
       )}
       {!isProductExistInCart && (
         <Button
-          color="success"
+          style={{
+            background: "#333",
+            color: " #fff",
+            fontFamily: "function-bold,Arial,sans-serif",
+            textDecoration: 'none'
+          }}
+          color="info"
           variant="contained"
           onClick={() => {
             addToCart(item);
