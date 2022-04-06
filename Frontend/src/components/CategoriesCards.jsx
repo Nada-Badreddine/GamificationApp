@@ -139,10 +139,10 @@ const useStyles = makeStyles(() => ({
   avatar: {
     fontFamily: 'Ubuntu',
     fontSize: '0.875rem',
-    backgroundColor: '#6d7efc !important',
+    backgroundColor: '#9f9f9f  !important',
   },
   join: {
-    background: 'linear-gradient(to top, #638ef0, #82e7fe)',
+    background: 'linear-gradient(to top, #000000, #c0c0c0)',
     '& > *': {
       textTransform: 'none !important',
     },
@@ -198,7 +198,6 @@ const CustomCard = ({
               variant={'contained'}
               color={'primary'}
               disableRipple
-              disabled={gifts.length ===0}
               onClick={() => navigate('/giftsbyCategory/' + id)}
             >
               see gifts

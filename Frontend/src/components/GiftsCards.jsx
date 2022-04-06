@@ -2,6 +2,7 @@ import React, { memo, useState } from 'react';
 import { useParams } from "react-router";
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
+import Typography from '@mui/material/Typography';
 
 import { useQuery } from '@apollo/client'
 import { LOAD_GIFTS_BY_CATEGORY } from './../services/giftServices/QueryAllGifts'
@@ -44,13 +45,18 @@ function GiftsCards(props) {
     }) ?? [];
 
   if (loadingFavoris || loading) {
-  return ( <Box sx={{ display: 'flex', justifyContent:"center" }}>
-    <CircularProgress />
-  </Box>)
+    return (<Box sx={{ display: 'flex', justifyContent: "center" }}>
+      <CircularProgress />
+    </Box>)
   }
-
+  console.log("data", data)
   return (
-    <Box mt={2}>
+    <Box mt={2} mb={2}>
+      <Box pl={2} mb={1}>
+        <Typography variant="h5" color="text.primary">
+          {data?.category?.Name}
+        </Typography>
+      </Box>
       <Grid container spacing={2}>
         <Grid item xs={2}>
           <Filters pointFilter={pointFilter} handleChange={handleChange} />
@@ -113,8 +119,6 @@ function GiftsCards(props) {
           </Box>
         </Grid>
       </Grid>
-
-
     </Box>
   );
 }

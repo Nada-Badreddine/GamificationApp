@@ -20,17 +20,19 @@ export default function RecipeReviewCard({ item, refetch, listFav, width }) {
                 width="194"
             />
             <CardContent>
-                <Box display='flex' justifyContent='space-between' alignItems='center'>
+                <Box display='flex' justifyContent='space-between' alignItems='center' pr={2}>
                     <Typography variant="body2" color="text.primary">
                         {item?.Name}
                     </Typography>
+                    <Box>
                     <Badge badgeContent={item?.PointNumber} color="primary" max={1000000}/>
+                    </Box>
                 </Box>
                 <Typography variant="body2" color="text.secondary" mt={1}>
                     {item?.Description}
                 </Typography>
             </CardContent>
-            <CardActions disableSpacing style={{ justifyContent: 'space-between' }}>
+            <CardActions disableSpacing style={{ justifyContent: 'space-between', paddingLeft: 0, paddingRight: 15 }}>
                 <AddOrRemoveFromFavoriteList refetch={refetch} listFav={listFav} gift={item} />
                 <AddOrRemoveFromCart item={item} />
             </CardActions>

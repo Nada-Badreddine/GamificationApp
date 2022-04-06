@@ -8,7 +8,7 @@ import Footer from '../components/Footer';
 const FavorisPage = (props) => {
 
   return (
-    <Box backgroundColor='#faf8f6'>
+    <Box backgroundColor='#efece9'>
     <Header />
     <Box px={5} pb={2}>
       <Typography variant="h5" color="text.primary">

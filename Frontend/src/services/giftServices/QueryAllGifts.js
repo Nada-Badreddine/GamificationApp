@@ -17,6 +17,7 @@ export const LOAD_GIFTS = gql`
 export const LOAD_GIFTS_BY_CATEGORY = gql`
 query($id: ID!) {
   category(id: $id) {
+    Name
     gifts {
       id
       Name
