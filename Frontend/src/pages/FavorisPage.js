@@ -1,4 +1,6 @@
 import React from 'react';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 import FavorisCards from './../components/FavorisCards';
 import Header from './../components/Header';
 import Footer from '../components/Footer';
@@ -6,11 +8,16 @@ import Footer from '../components/Footer';
 const FavorisPage = (props) => {
 
   return (
-    <>
-      <Header />
+    <Box backgroundColor='#faf8f6'>
+    <Header />
+    <Box px={5} pb={2}>
+      <Typography variant="h5" color="text.primary">
+        MA LISTE DES FAVORITES
+      </Typography>
       <FavorisCards />
+    </Box>
       <Footer />
-    </>
+    </Box>
   )
 }
 

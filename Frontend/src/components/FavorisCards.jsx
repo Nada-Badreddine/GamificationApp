@@ -18,7 +18,7 @@ function FavorisCards(props) {
     </Box>)
     }
   return (
-    <Box display="flex" gap={1} flexWrap="wrap" px={2}>
+    <Box display="flex" gap={1} flexWrap="wrap" mt={2}>
     {listFav?.map((item) => {
         return (
           <CardItem item={item} listFav={listFav} refetch={refetch} />
