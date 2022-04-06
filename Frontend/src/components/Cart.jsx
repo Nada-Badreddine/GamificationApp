@@ -161,7 +161,7 @@ const Cart = () => {
           );
         })}
       </Box>
-      <Box display="flex" justifyContent='space-between' backgroundColor="#fff" p={2}>
+      <Box display="flex" justifyContent='space-between' backgroundColor="#fff" p={2} mb={2}>
         <Box>
           <p className={classes.name}>
             Total :
