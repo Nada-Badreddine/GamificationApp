@@ -49,7 +49,7 @@ function GiftsCards(props) {
       <CircularProgress />
     </Box>)
   }
-  console.log("data", data)
+
   return (
     <Box mt={2} mb={2}>
       <Box pl={2} mb={1}>
