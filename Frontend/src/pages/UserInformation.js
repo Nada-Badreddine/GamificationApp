@@ -1,21 +1,25 @@
-import React from 'react'
-import "./../styles/UserInformation.css"
+import React from 'react';
+import './../styles/UserInformation.css';
 import RewardsUser from './../components/RewardsUser';
-import Header from './../components/Header';
+import NavSection from '../components/NavSection/NavSection';
 import Footer from '../components/Footer';
 import Box from '@mui/material/Box';
 
 const UserInformation = () => {
   return (
-    <Box backgroundColor='#efece9'>
-      <Header />
+    <Box backgroundColor="#efece9">
+      <NavSection />
       <div class="card-container">
-        <img class="round" src="https://randomuser.me/api/portraits/women/79.jpg" alt="user" />
+        <img
+          class="round"
+          src="https://randomuser.me/api/portraits/women/79.jpg"
+          alt="user"
+        />
       </div>
       <RewardsUser />
       <Footer />
     </Box>
-  )
-}
+  );
+};
 
-export default UserInformation
+export default UserInformation;
