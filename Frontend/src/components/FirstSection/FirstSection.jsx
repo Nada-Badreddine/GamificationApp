@@ -17,7 +17,7 @@ const FirstSection = () => {
               <div className={classes.singleWelcomeHero}>
                 <div className={classes.welcomeHeroTxt}>
                   <h2>Engage, Recognize, Win a reward </h2>
-                  <p>
+                  <p style={{ color: 'grey' }}>
                     the satisfaction of our employees is a priority, with our
                     application we encourage their engagement with rewards of
                     their choice and make the reward experience enjoyable for

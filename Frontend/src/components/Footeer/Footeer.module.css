@@ -1,0 +1,42 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+*{
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-o-box-sizing:border-box;
+	-ms-box-sizing:border-box;
+	box-sizing:border-box;
+}
+body{
+	font-family: 'Roboto', sans-serif;
+	font-size:16px;
+	color:#a09e9c;
+	background: #fff;
+    text-transform: capitalize;
+    max-width:1920px;
+    margin:0 auto;
+	overflow-x:hidden;
+}
+.welcomeHero {
+    position: relative;
+    z-index: 1;
+    background: #f8f9fd;
+}
+
+
+
+
+.navbarHeader a.navbarBrand,.navbarHeader a.navbarBrand:hover,.navbarHeader a.navbarBrand:focus {
+    display: inline-block;
+    color: #616060;
+    font-size: 24px;
+    font-weight: 500;
+    padding: 45px 0px;
+    text-transform:capitalize;
+}
+.navbarHeader a.navbarBrand span{display: inline-block;color:#e99c2e;text-transform:capitalize;}
+
+.wrap-sticky nav.navbar.bootsnav.sticked .navbarHeader a.navbarBrand,.wrap-sticky nav.navbar.bootsnav.sticked .navbarHeader a.navbarBrand:hover,.wrap-sticky nav.navbar.bootsnav.sticked .navbarHeader a.navbarBrand:focus {padding:30px 0px;}
