@@ -17,37 +17,36 @@ const UserInformation = () => {
   return (
     <Box backgroundColor="#efece9">
       <NavSection />
-      <div
-        class="card-container"
-        style={{ marginLeft: '50px', marginRight: '50px' }}
-      >
-        <img
-          class="round"
-          src="https://randomuser.me/api/portraits/women/79.jpg"
-          alt="user"
-        />
-        <div
-          style={{
-            color: '#000000b0',
-            position: 'absolute',
-            right: '39px',
-            top: '40px',
-          }}
-          onClick={() => showModal()}
-        >
-          <SettingsIcon />
+      <div div style={{ backgroundColor: 'white' }}>
+        <div class="card-container" style={{ width: '50%', margin: 'auto' }}>
+          <img
+            class="round"
+            src="https://randomuser.me/api/portraits/women/79.jpg"
+            alt="user"
+          />
+          <div
+            style={{
+              color: '#000000b0',
+              position: 'absolute',
+              right: '39px',
+              top: '40px',
+            }}
+            onClick={() => showModal()}
+          >
+            <SettingsIcon />
+          </div>
         </div>
+        <RewardsUser />
+
+        <Footer />
+
+        {openModal && (
+          <EditProfil
+            isModalVisible={openModal}
+            setIsModalVisible={setOpenModal}
+          />
+        )}
       </div>
-      <RewardsUser />
-
-      <Footer />
-
-      {openModal && (
-        <EditProfil
-          isModalVisible={openModal}
-          setIsModalVisible={setOpenModal}
-        />
-      )}
     </Box>
   );
 };

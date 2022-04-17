@@ -1,94 +1,82 @@
-import { useQuery } from '@apollo/client';
-import { LOAD_REWARDS_BY_USER } from './../services/RewardsUserServices/QueryRewardsbyUser';
-import React, { useState } from 'react';
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
+import React from 'react';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import Divider from '@mui/material/Divider';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemAvatar from '@mui/material/ListItemAvatar';
+import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
-import { Col, Row, Container, Button } from 'reactstrap';
-import './../styles/TypeRewards.css';
-import CircularProgress from '@mui/material/CircularProgress';
-
-const bull = (
-  <Box
-    component="span"
-    sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-  >
-    •
-  </Box>
-);
 
 const RewardsUser = () => {
-  const userConecte = localStorage.getItem('USER_ID');
-  const { loading, data } = useQuery(LOAD_REWARDS_BY_USER, {
-    variables: { id: userConecte },
-  });
-  console.log('first', data?.user?.user_rewards);
-  const totalPoints = data?.user?.user_rewards.reduce(
-    (acc, curr) =>
-      acc + curr?.type_rewards.reduce((ac, cr) => ac + cr?.MaxPointNumber, 0),
-    0
-  );
-
-  if (loading) {
-    return (
-      <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-        <CircularProgress />
-      </Box>
-    );
-  }
-
   return (
-    <div>
-      <Typography variant="body2">Total points: {totalPoints}</Typography>
-      <Container>
-        <Row>
-          {data?.user?.user_rewards.map((item) => {
-            return (
-              <Col xs="12" md="4">
-                <Card
-                  style={{
-                    backgroundColor: '#fff',
-                    height: '290px',
-                    width: '291px',
-                  }}
+    <div style={{ margin: 'auto', width: '20%', marginTop: '96px' }}>
+      <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+        <ListItem alignItems="flex-start">
+          <ListItemAvatar>
+            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+          </ListItemAvatar>
+          <ListItemText
+            primary="Brunch this weekend?"
+            secondary={
+              <React.Fragment>
+                <Typography
+                  sx={{ display: 'inline' }}
+                  component="span"
+                  variant="body2"
+                  color="text.primary"
                 >
-                  <CardContent>
-                    <div className="icon-sequence-bg">
-                      <img
-                        src="https://assets-global.website-files.com/60080cdf80021f5e4cc61c9b/61533720e9211f738a3d8912_Automate.svg"
-                        className="icon-sequence"
-                        alt=""
-                      />
-                    </div>
-                    <Typography variant="body2">
-                      <div key={item?.Description}>
-                        {item.type_rewards.map((itemRewards) => {
-                          return (
-                            <>
-                              <h6
-                                key={itemRewards?.Title}
-                                className="heading-sequence"
-                              >
-                                {itemRewards?.Title}
-                              </h6>
-                              <p>{item?.Description}</p>
-                              <h6 className="heading-sequence">
-                                {itemRewards?.MaxPointNumber}
-                              </h6>
-                            </>
-                          );
-                        })}
-                      </div>
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Col>
-            );
-          })}
-        </Row>
-      </Container>
+                  Ali Connors
+                </Typography>
+                {" — I'll be in your neighborhood doing errands this…"}
+              </React.Fragment>
+            }
+          />
+        </ListItem>
+        <Divider variant="inset" component="li" />
+        <ListItem alignItems="flex-start">
+          <ListItemAvatar>
+            <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
+          </ListItemAvatar>
+          <ListItemText
+            primary="Summer BBQ"
+            secondary={
+              <React.Fragment>
+                <Typography
+                  sx={{ display: 'inline' }}
+                  component="span"
+                  variant="body2"
+                  color="text.primary"
+                >
+                  to Scott, Alex, Jennifer
+                </Typography>
+                {" — Wish I could come, but I'm out of town this…"}
+              </React.Fragment>
+            }
+          />
+        </ListItem>
+        <Divider variant="inset" component="li" />
+        <ListItem alignItems="flex-start">
+          <ListItemAvatar>
+            <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
+          </ListItemAvatar>
+          <ListItemText
+            primary="Oui Oui"
+            secondary={
+              <React.Fragment>
+                <Typography
+                  sx={{ display: 'inline' }}
+                  component="span"
+                  variant="body2"
+                  color="text.primary"
+                >
+                  Sandra Adams
+                </Typography>
+                {' — Do you have Paris recommendations? Have you ever…'}
+              </React.Fragment>
+            }
+          />
+        </ListItem>
+      </List>
     </div>
   );
 };
