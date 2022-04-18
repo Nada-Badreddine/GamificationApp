@@ -6,7 +6,7 @@ const Footeer = () => {
   return (
     <div className={classes.body}>
       <div className={classes.welcomeHero}>
-        <div className={classes.topArea}>
+        <div>
           <Container>
             <div className={classes.navbarHeader}>
               <a className={classes.navbarBrand} href="/">
