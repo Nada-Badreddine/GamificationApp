@@ -15,7 +15,7 @@ mutation($input: createFavorisInput) {
 export const DELETE_FAVORIS_MUTATION  = gql`
 
 mutation($input: deleteFavorisInput) {
-  deleteFavoris(input: $input) {
+  deleteFavoris(input:$input) {
     favoris {
       id
     }

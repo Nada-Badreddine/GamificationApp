@@ -29,7 +29,6 @@ const NavSection = () => {
                 </div>
 
                 <div className={classes.welcomeHero}>
-                  <div>
                     <ul>
                       <li className={classes.active}>
                         <a href="#home">home</a>
@@ -46,26 +45,15 @@ const NavSection = () => {
                       <li className={classes.active}>
                         <a href="/userInformation">profil</a>
                       </li>
-                      <li className={classes.active}>
-                        <a href="#blog">blog</a>
-                      </li>
-                      <li className={classes.active}>
-                        <a href="#newsletter">contact</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div class="attrNav">
-                  <ul>
-                    <li>
+                      <li>
                       <IconButton
                         onClick={() => navigate('/cart')}
                         size="large"
                         aria-label="show 17 new notifications"
                         color="inherit"
+                        style={{ padding: 0}}
                       >
-                        <Badge badgeContent={cart.length} color="error">
+                        <Badge badgeContent={cart.length ?? 0} color="error">
                           <ShoppingCartIcon />
                         </Badge>
                       </IconButton>
@@ -76,6 +64,7 @@ const NavSection = () => {
                         aria-label="show 17 new notifications"
                         color="inherit"
                         onClick={() => navigate('/FavorisPage')}
+                        style={{ padding: 0}}
                       >
                         <FavoriteBorderIcon />
                       </IconButton>
@@ -85,6 +74,7 @@ const NavSection = () => {
                         size="large"
                         aria-label="show 17 new notifications"
                         color="inherit"
+                        style={{ padding: 0}}
                         onClick={() => {
                           localStorage.clear();
                           window.location.replace('/');
@@ -93,8 +83,8 @@ const NavSection = () => {
                         <LogoutIcon />
                       </IconButton>
                     </li>
-                  </ul>
-                </div>
+                    </ul>
+                  </div>
               </Container>
             </nav>
           </div>

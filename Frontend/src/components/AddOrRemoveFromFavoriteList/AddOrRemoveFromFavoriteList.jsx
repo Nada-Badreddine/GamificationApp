@@ -27,25 +27,31 @@ function AddOrRemoveFromFavoriteList({ gift, listFav, refetch }) {
     return elem?.id === gift?.id;
   });
 
-  console.log('tada', listFav);
+
   const { loading: loadingFavoris, data: dataFavoris } = useQuery(
     LOAD_FAVORIS_BY_USER_ID,
     { variables: { id: userConecte } }
   );
-  console.log('aaaaa', dataFavoris?.user?.favorises);
   const x = dataFavoris?.user?.favorises.map((n) => n?.id);
-  console.log('azzzz', x);
   return (
     <>
       {ExistingFavorite ? (
         <IconButton
           aria-label="add to favorites"
+
+
+
+
+
           onClick={() => {
-            deleteFavoris({
-              variables: { where: { id: 72 } },
-            });
-            refetch();
+            deleteFavoris({input:{where:{ id :19}}});
+            
+            
+            
+           
           }}
+          
+           
         >
           <FavoriteIcon sx={{ color: common['black'] }} />
         </IconButton>

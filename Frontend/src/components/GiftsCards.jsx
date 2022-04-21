@@ -3,7 +3,6 @@ import { useParams } from "react-router";
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
 import Typography from '@mui/material/Typography';
-
 import { useQuery } from '@apollo/client'
 import { LOAD_GIFTS_BY_CATEGORY } from './../services/giftServices/QueryAllGifts'
 import { LOAD_FAVORIS_BY_USER_ID } from './../services/favorisServices/QueryFavoris'

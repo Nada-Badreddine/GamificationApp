@@ -1,0 +1,207 @@
+.giftContentMain{
+    background-color: white;
+    display: flex;
+    height: 625px;
+}
+.giftCategories{
+    width: 15%;
+    position: fixed;
+    z-index: 1000;
+    height: calc(100vh - 73px);
+}
+
+.giftContent{
+    padding: 20px 0 20px 20px;
+    height: 100%;
+}
+.giftCategoriesSearchFilters{
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100%;
+    width: 100%;
+}
+.giftCategoriesSearchSousFilters{
+    min-height: 90px;
+    margin: 26px 41px;
+}
+.giftCategoriesSearchByName{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;  
+}
+
+.filterTag{
+    margin: 5px 0;
+    color: #797979; 
+    font-size: .75rem;
+    font-weight: 500;
+    background-color: transparent;
+    border-color: transparent;
+    box-sizing: border-box;
+    line-height: 20px;
+    white-space: nowrap;
+    background: #fafafa;
+    padding: 0 7px;
+
+    height: auto;
+}
+.filterTitle{
+    font-size: .875rem;
+    font-weight: 600;
+    width: 100%;
+    text-align: center;
+    color: #291bb9;
+}
+.giftContentheader{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; 
+}
+.giftContentCards{
+    height: 100%;
+    padding: 25px 0 0 0;
+    width: 100%;
+}
+.inputSearch{
+    padding-left: 10px;
+    box-shadow: 0 0 7px 0 rgb(0 0 0 / 6%);
+    height: 40px;
+    margin: 0 40px;
+    width: 300px !important;
+    box-sizing: border-box;
+    padding: 0;
+    color: rgba(0, 0, 0, 0.65);
+    font-size: 14px;
+    font-variant: tabular-nums;
+    line-height: 1.5;
+    list-style: none;
+    font-feature-settings: 'tnum';
+    position: relative;
+    display: inline-block;
+    text-align: start;
+
+}
+.antInput{
+    border: unset !important;
+    padding-right: 30px;
+    min-height: 100%;
+    position: relative;
+    text-align: inherit;
+    text-overflow: ellipsis;
+    border-radius: 4px;
+    transition: all 0.3s;
+    display: inline-block;
+    width: 100%;
+    height: 32px;
+    padding: 4px 11px;
+    color: rgba(0, 0, 0, 0.65);
+    font-size: 14px;
+    line-height: 1.5;
+    background-color: #fff;
+    background-image: none;
+    font-variant: tabular-nums;
+    list-style: none;
+    font-feature-settings: 'tnum';
+    box-sizing: border-box;
+    margin: 0;
+}
+.inputSSuffix{
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.65);
+    line-height: 0;
+    transform: translateY(-50%);  
+    
+}
+.SuperTitleContent{
+   
+    font-weight: 600;
+    width: 100%;
+
+    color: #291bb9;
+}
+.giftContentList{
+    grid-template-columns: repeat(4, calc(22% - 20px));
+    display: grid;
+    justify-content: center;
+    gap: 60px;
+    padding: 0 10px 20px;
+    *box-sizing: border-box;
+    background-repeat: no-repeat;
+}
+
+.giftContentImgContainer{
+    padding: 0;
+    position: relative;
+    width: 100%;
+    margin-bottom: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.giftContentInfo{
+   
+    text-align: left !important;  
+}
+.giftContentImg{
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px; 
+    vertical-align: middle;
+    border-style: none;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    height: 100px;
+    width: 100%;
+}
+.giftContentInfoTitle{
+   
+    font-size: .875rem;
+    font-weight: 600;
+    color: #0f0f0f;
+    margin-bottom: 10px;
+    width: 100%; 
+}
+.giftContentInfoextraInformation{
+    min-height: 100px; 
+}
+.giftContentInfoSousInformation{
+    display: flex;
+    font-size: .875rem;
+    width: 100%;
+    color: #0f0f0f;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+
+}
+.giftContentCartTag{
+    padding: 6px 14px;
+    border-radius: 5px;
+    border: solid 1px #291bb9;
+    margin-top: 5px;
+    margin-right: 10px;
+    font-size: 11px;
+    font-size: .6875rem;
+    font-weight: 500;
+    color: #291bb9;
+    cursor: pointer;
+}
+.giftContentCartTagContainer{
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 39px;
+}
+.giftContentButtnCart{
+    display: flex;
+    font-size: .875rem;
+    width: 100%;
+    color: #0f0f0f;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
