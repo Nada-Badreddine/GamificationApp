@@ -11,10 +11,16 @@ import Checkbox from '@mui/material/Checkbox';
 const GiftPage = (props) => {
   const params = useParams();
   const current = params.catgId;
+  const [searchQuery, setSearch] = useState('');
   const { loading, data } = useQuery(LOAD_GIFTS_BY_CATEGORY, { variables: { id: current } });
   console.log("aaaaaaaaa",data)
   const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
   const ApiUrl = 'http://localhost:1337'
+
+  const handleChangeSearch = (value) => {
+    setSearch(value);
+  };
+
   return (
     <>
   <div className={classes.giftContentMain}>
@@ -56,7 +62,12 @@ const GiftPage = (props) => {
 <span className={classes.inputSSuffix}>
     <div style={{position: 'absolute',
     left: '268px'}}>
-    < SearchRoundedIcon/>
+    < SearchRoundedIcon 
+    
+    onChange={(e) => handleChangeSearch(e.target.value)}
+    value={searchQuery}
+    
+    />
     </div>
 </span>
 </span>
