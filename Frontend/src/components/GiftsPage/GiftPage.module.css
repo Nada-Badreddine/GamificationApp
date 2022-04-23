@@ -1,18 +1,14 @@
 .giftContentMain{
     background-color: white;
     display: flex;
-    height: 625px;
 }
 .giftCategories{
     width: 15%;
-    position: fixed;
-    z-index: 1000;
-    height: calc(100vh - 73px);
+   
 }
 
 .giftContent{
     padding: 20px 0 20px 20px;
-    margin-left: 15%;
     width: 85%;
     height: 100%;
 }
@@ -215,4 +211,5 @@
     color: #0f0f0f;
     overflow: hidden;
     text-overflow: ellipsis;
+    align-items: center;
 }

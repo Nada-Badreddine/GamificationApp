@@ -1,24 +1,24 @@
 .rewardsgroup{
-    grid-template-columns: calc(50% - 15px) calc(50% - 15px);
-    display: grid;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
 }
 .rewardDetailsCard{
-    width: 400px;
+    width: 450px;
     height: 120px;
     margin-bottom: 40px;
     border: 1px #cdcdcd solid;
     box-shadow: 7px 7px 7px 0px #cdcdcd;
     padding: 10px;
-    position: relative;
     display: flex;
-    justify-content: start;
-    align-items: start;
+    align-items: center;
+    gap: 20px;
 }
 .SuperTitleContent{
-   
+    padding: 10px;
     font-weight: 600;
     width: 100%;
-
     color: #291bb9;
 }
 .ImgCard{
