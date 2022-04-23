@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "favorises",
   "info": {
-    "name": "Favoris"
+    "name": "Favoris",
+    "description": ""
   },
   "options": {
     "increments": true,

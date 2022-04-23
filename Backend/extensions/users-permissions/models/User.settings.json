@@ -76,6 +76,18 @@
     },
     "job": {
       "type": "string"
+    },
+    "ImgProfil": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": [
+        "files",
+        "images",
+        "videos"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
     }
   }
 }

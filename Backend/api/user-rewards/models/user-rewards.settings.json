@@ -22,8 +22,8 @@
       "dominant": true
     },
     "type_rewards": {
-      "collection": "type-rewards",
       "via": "user_rewards",
+      "collection": "type-rewards",
       "dominant": true
     }
   }
