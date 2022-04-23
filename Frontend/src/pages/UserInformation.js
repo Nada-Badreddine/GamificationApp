@@ -3,21 +3,29 @@ import classes from './../styles/UserInfo.module.css';
 import NavSection from '../components/NavSection/NavSection';
 import Footeer from '../components/Footeer/Footeer';
 import SettingsIcon from '@mui/icons-material/Settings';
-import { Modal } from 'antd';
 import EditProfil from '../components/EditProfil/EditProfil';
-
+import { LOAD_USER_BY_ID } from '../services/userServices/QueryUser'
+import { useQuery } from '@apollo/client';
+import { LOAD_USERS } from '../services/userServices/QueryUser'
 
 
 const UserInformation = () => {
 
   const [openModal, setOpenModal] = useState(false);
-
+  const userConecte = localStorage.getItem("USER_ID");
+  const { loading, data} = useQuery(LOAD_USER_BY_ID, { variables: { id: userConecte } })
+  const { loading: loadingUser, data : dataUser } = useQuery(LOAD_USERS)
   const showModal = (item) => {
     setOpenModal(true);
   };
+  const ApiUrl = 'http://localhost:1337'    
 
+
+
+
+  console.log('eeeee',dataUser)
   return (
-   
+  
 <div>
 <NavSection />
   <div style={{display: 'flex',
@@ -31,24 +39,27 @@ const UserInformation = () => {
     <SettingsIcon />
 
     </div>
+
+
+   
 <div style={{marginBottom: '35px'}}>
 
   <div className={classes.avatarWithBadge} >
-    <div  className={classes.avatarUser}>
-      <span className={classes.avatarUserCircle} >
-        <img src="https://tse3.mm.bing.net/th?id=OIP.2i5UaEHaQM3PYAYXQyM1AAAAAA&pid=Api&P=0&w=179&h=179" />
-      </span>
-     
-    </div>
+  <div>
+            <img
+              src={ ApiUrl + data?.user?.ImgProfil[0]?.formats?.thumbnail?.url}
+              alt="imgProfil"
+              className={classes.avatarUser}
+            />
+          </div>
+
 <a href="/">
   <img  className={classes.userBadge}  src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Star_icon_stylized.svg/1077px-Star_icon_stylized.svg.png" alt="star" />
 </a>
   </div>
- 
-
 </div>
-
-<div className={classes.infoUserName}>Nada Badreddine</div>
+<div className={classes.infoUserName}>{data?.user?.username}</div>   
+<div className={classes.infoUserJob}>{data?.user?.job}</div>   
 <div style={{textAlign:'center'}}>
 
 <div className={classes.performanceTotalPoints}>
@@ -64,31 +75,27 @@ const UserInformation = () => {
 <div className={classes.dashboardRecompenses}>
 <div className={classes.dashboardRecompensesTitle}> Achivements and Recompenses </div>
 <div className={classes.dashboardRecompensesContent}></div>
-<div >
-  <span>title</span>
-  <span>Description</span>
-  <span>Total Points</span>
-</div>
-<div >
-  <span>title</span>
-  <span>Description</span>
-  <span>Total Points</span>
-</div>
-<div >
-  <span>title</span>
-  <span>Description</span>
-  <span>Total Points</span>
-</div>
-<div >
-  <span>title</span>
-  <span>Description</span>
-  <span>Total Points</span>
-</div>
-</div>
+{data?.user?.user_rewards?.map((item) => {
+  return (
+    <div>
+   
+    {item?.type_rewards.map((iteem) => {
+              return (
+                <>
+               <span>{iteem?.Title}</span> 
+               <span>{iteem?.PointNumber} Points</span>
+                </>
+              )})}
+               <span>{item?.Description}</span>
+    </div>
+    )})}
+     
 
+</div>
 </div>
  </div>      
 </div>
+     
 <div className={classes.dashboardTopPerformingEmployee}>
   <div className={classes.dashboardTopPerformingEmployeeTitle}>
     <span> Top performing employee</span> 
@@ -98,10 +105,10 @@ const UserInformation = () => {
     alignItems: 'center'}} className={classes.dashboardTopPerformingEmployeeContent}>
     <div className={classes.topRankedEmployee}>
      <div className={classes.topRankedEmployeeInfo}>
-        <div className={classes.userAvatarWithBadge}>
-          <div className={classes.userAvatar}>
-            <span className={classes.antAvatarImage}>
-              <img src="https://tse3.mm.bing.net/th?id=OIP.2i5UaEHaQM3PYAYXQyM1AAAAAA&pid=Api&P=0&w=179&h=179" />
+        <div className={classes.userAvatarWithBadge }>
+          <div className={classes.userAvatar} >
+            <span className={classes.antAvatarImage} > 
+              <img  src="https://tse3.mm.bing.net/th?id=OIP.2i5UaEHaQM3PYAYXQyM1AAAAAA&pid=Api&P=0&w=179&h=179" />
             </span>
           </div>
         <div>
@@ -109,7 +116,7 @@ const UserInformation = () => {
         <img  className={classes.userBadgeTopEmployee}  src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Star_icon_stylized.svg/1077px-Star_icon_stylized.svg.png" alt="star" />
         </a>
       </div>     
-       </div>
+       </div>      
       <div className={classes.topRankedStudentsCardEmployeeInfo}>
 <div className={classes.topRankedUserName}> Feten HajBoubaker </div>
 <div className={classes.topRankedUserJob}>

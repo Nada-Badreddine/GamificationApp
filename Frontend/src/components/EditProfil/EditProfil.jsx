@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 import { Modal } from 'antd';
 import classes from './EditProfil.module.css';
 import { Button } from 'antd';
+import { LOAD_USER_BY_ID } from './../../services/userServices/QueryUser'
+import { useQuery } from '@apollo/client';
+
+
+
 
 const EditProfil = (props) => {
   const handleCancel = () => {
@@ -12,6 +17,11 @@ const EditProfil = (props) => {
   const [newPassFirst, setNewPassFirst] = useState('');
   const [newPassSecond, setNewPassSecond] = useState('');
   const [messageError, setMessageError] = useState('');
+  const userConecte = localStorage.getItem("USER_ID");
+  const { loading, data} = useQuery(LOAD_USER_BY_ID, { variables: { id: userConecte } })
+  const ApiUrl = 'http://localhost:1337'  
+
+
 
   const handleChangeOldPass = (e) => {
     setOldPass(e.target.value);
@@ -42,14 +52,14 @@ const EditProfil = (props) => {
         <div>
           <div>
             <img
-              src="assets/images/avatarProfil.jpg"
+              src={ ApiUrl + data?.user?.ImgProfil[0]?.formats?.thumbnail?.url}
               alt="imgProfil"
               className={classes.profileImg}
             />
           </div>
           <div>
             <h5 style={{ textAlign: 'center', padding: '15px' }}>
-              Nada Badreddine
+            {data?.user?.username}
             </h5>
 
             <div style={{ paddingBottom: '20px' }}>

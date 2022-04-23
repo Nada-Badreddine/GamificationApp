@@ -31,7 +31,7 @@ const NavSection = () => {
                 <div className={classes.welcomeHero}>
                     <ul>
                       <li className={classes.active}>
-                        <a href="#home">home</a>
+                        <a href="/">home</a>
                       </li>
                       <li className={classes.active}>
                         <a href="/pageCategories">gift Catalog</a>
