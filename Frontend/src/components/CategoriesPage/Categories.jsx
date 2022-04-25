@@ -1,17 +1,44 @@
 import React from 'react';
-import { useParams } from "react-router";
 import classes from './Categories.module.css'
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
-import { useQuery } from '@apollo/client';
+import { useQuery,useMutation } from '@apollo/client';
 import { useNavigate } from 'react-router-dom';
-
+import { CREATE_PRODUCT_MUTATION } from './../../services/addProduct';
 import { LOAD_CATEGORIES } from './../../services/categoriesServices/QueryAllCategories'
+
+
+
+
+
+
+
+
+
+
 const Categories = (props) => {
   const { loading, data } = useQuery(LOAD_CATEGORIES)
+  const [createProduct] = useMutation(CREATE_PRODUCT_MUTATION);
+
   const navigate = useNavigate();
   const ApiUrl = 'http://localhost:1337'
 
-  console.log("a",data)
+  
+
+  const AddProduct = () => {
+    createProduct({
+      variables: {
+        input: {
+          data: { name: "tftvbyuy", price : 515151 },
+        },
+      },
+    });
+    
+  };
+
+
+
+
+ 
   return (
     <>
   <div  style={{justifyContent: 'center'}}className={classes.giftContentMain}>
@@ -52,7 +79,9 @@ const Categories = (props) => {
 
 </div>
  </div>
+
   </div>
+  
 </div>
 
           )})}
@@ -66,6 +95,9 @@ const Categories = (props) => {
 </div>
 
 </div>
+
+<button onClick={() => AddProduct()}>add product </button>
+
   </div>
     </>
   );

@@ -17,8 +17,11 @@
     color: #616060;
     font-weight: 400;
     margin: 20px 0 22px;
+    text-align: center;
 }
-.welcomeHeroTxt p{margin: 35px 0 20px;}
+.welcomeHeroTxt p{margin: 35px 0 20px;
+    text-align: center;
+}
 
 
 .welcomeHeroTxt.packages-price p {
