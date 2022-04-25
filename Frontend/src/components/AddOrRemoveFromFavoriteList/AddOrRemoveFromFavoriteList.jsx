@@ -6,7 +6,7 @@ import { DELETE_FAVORIS_MUTATION } from '../../services/favorisServices/Mutation
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import IconButton from '@mui/material/IconButton';
 import { common, grey } from '@mui/material/colors';
-import { LOAD_FAVORIS_BY_USER_ID } from '../../services/favorisServices/QueryFavoris';
+
 function AddOrRemoveFromFavoriteList({ gift, listFav, refetch }) {
   const userConecte = localStorage.getItem('USER_ID');
   const [deleteFavoris] = useMutation(DELETE_FAVORIS_MUTATION);
@@ -28,32 +28,18 @@ function AddOrRemoveFromFavoriteList({ gift, listFav, refetch }) {
   });
 
 
-  const { loading: loadingFavoris, data: dataFavoris } = useQuery(
-    LOAD_FAVORIS_BY_USER_ID,
-    { variables: { id: userConecte } }
-  );
-  const x = dataFavoris?.user?.favorises.map((n) => n?.id);
   return (
     <>
       {ExistingFavorite ? (
         <IconButton
           aria-label="add to favorites"
-
-
-
-
-
           onClick={() => {
-            deleteFavoris({input:{where:{ id :19}}});
-            
-            
-            
-           
+            deleteFavoris({input:{where:{ id :19}}});     
           }}
           
            
         >
-          <FavoriteIcon sx={{ color: common['black'] }} />
+          <FavoriteIcon sx={{ color: common['red'] }} />
         </IconButton>
       ) : (
         <IconButton

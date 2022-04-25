@@ -3,19 +3,28 @@ import { useParams } from "react-router";
 import classes from './GiftPage.module.css'
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import { useQuery } from '@apollo/client'
+
 import { LOAD_GIFTS_BY_CATEGORY } from './../../services/giftServices/QueryAllGifts'
+import { LOAD_FAVORIS_BY_USER_ID } from './../../services/favorisServices/QueryFavoris'
+import Box from '@mui/material/Box';
+import CircularProgress from '@mui/material/CircularProgress';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Filters from '../Filters';
+import AddOrRemoveFromCart from '../AddOrRemoveFromFavoriteList';
+import formatListFavoris from '../../utils/formatListFavoris'
 
 const GiftPage = (props) => {
   const params = useParams();
   const current = params.catgId;
   const [searchQuery, setSearch] = useState('');
   const [pointFilter, setPointFilter] = React.useState('');
+  const userConecte = localStorage.getItem("USER_ID");
   const { loading, data } = useQuery(LOAD_GIFTS_BY_CATEGORY, { variables: { id: current } });
+  const { loading: loadingFavoris, data: dataFavoris, refetch } = useQuery(LOAD_FAVORIS_BY_USER_ID, { variables: { id: userConecte } })
+
   console.log("aaaaaaaaa", data)
   const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
   const ApiUrl = 'http://localhost:1337'
@@ -33,6 +42,12 @@ const GiftPage = (props) => {
     return point > 400
   }
 
+  if (loadingFavoris || loading) {
+    return (<Box sx={{ display: 'flex', justifyContent: "center" }}>
+      <CircularProgress />
+    </Box>)
+  }
+
   const filtredItems =
     data?.category?.gifts?.filter((item) => {
       if (pointFilter) {
@@ -40,8 +55,8 @@ const GiftPage = (props) => {
       }
       return item?.Name.toLowerCase().includes(searchQuery.toLowerCase());
     }) ?? [];
-  console.log("filtredItems", filtredItems)
-  console.log("searchQuery", searchQuery)
+    const listFav = formatListFavoris(dataFavoris?.user?.favorises ?? [])
+
   return (
     <>
       <div className={classes.giftContentMain}>
@@ -83,9 +98,6 @@ const GiftPage = (props) => {
                   left: '268px'
                 }}>
                   < SearchRoundedIcon
-
-                   
-
                   />
                 </div>
               </span>
@@ -109,7 +121,7 @@ const GiftPage = (props) => {
                           <div className={classes.giftContentCartTagContainer} >
                             <div className={classes.giftContentCartTag} > Add to cart</div>
                           </div>
-                          <FavoriteBorderOutlinedIcon />
+                          <AddOrRemoveFromCart gift={item} refetch={refetch} listFav={listFav} />
                         </div>
                       </div>
                     </div>
