@@ -39,14 +39,14 @@ function AddOrRemoveFromFavoriteList({ gift, listFav, refetch }) {
           
            
         >
-          <FavoriteIcon sx={{ color: common['red'] }} />
+          <FavoriteIcon sx={{ color: "#6c64c3" }} />
         </IconButton>
       ) : (
         <IconButton
           aria-label="add to favorites"
           onClick={() => AddToFavoris()}
         >
-          <FavoriteIcon sx={{ color: grey[300] }} />
+          <FavoriteIcon sx={{ color: grey[200] }} />
         </IconButton>
       )}
     </>
