@@ -13,8 +13,9 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Filters from '../Filters';
-import AddOrRemoveFromCart from '../AddOrRemoveFromFavoriteList';
+import AddOrRemoveFromFavoriteList from '../AddOrRemoveFromFavoriteList';
 import formatListFavoris from '../../utils/formatListFavoris'
+import AddOrRemoveFromCart from '../AddOrRemoveFromCart';
 
 const GiftPage = (props) => {
   const params = useParams();
@@ -118,10 +119,8 @@ const GiftPage = (props) => {
                         <div className={classes.giftContentInfoSousInformation} >{item?.PointNumber} Points</div>
 
                         <div className={classes.giftContentButtnCart}>
-                          <div className={classes.giftContentCartTagContainer} >
-                            <div className={classes.giftContentCartTag} > Add to cart</div>
-                          </div>
-                          <AddOrRemoveFromCart gift={item} refetch={refetch} listFav={listFav} />
+                         <AddOrRemoveFromCart item={item} />
+                          <AddOrRemoveFromFavoriteList gift={item} refetch={refetch} listFav={listFav} />
                         </div>
                       </div>
                     </div>

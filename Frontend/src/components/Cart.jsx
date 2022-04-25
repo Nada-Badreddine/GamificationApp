@@ -75,7 +75,7 @@ const Cart = () => {
 
   const [createOrderLine] = useMutation(ADD_GIFTS_TO_LINE_MUTATION);
   const userConecte = localStorage.getItem('USER_ID');
-  const totalPoints = cart.reduce(
+  const totalPoints = cart?.reduce(
     (ac, cr) => ac + cr?.PointNumber * cr?.quantity,
     0
   );
@@ -121,7 +121,7 @@ const Cart = () => {
 
   return (
     <Box px={6} >
-      {cart.length <= 0 && <p>No Item in the Cart!</p>}
+      {cart?.length <= 0 && <p>No Item in the Cart!</p>}
       <Box>
         {cart?.map((item, index) => {
           return (
