@@ -28,8 +28,11 @@ const FirstSection = () => {
                     style={{
                       backgroundColor: '#e99c2e',
                       color: 'white',
+                      marginLeft: '-9px',
+    marginRight: '9px'
                     }}
                     variant="contained"
+                    
                   >
                     <CardGiftcardIcon /> See Gifts
                   </Button>
@@ -39,7 +42,7 @@ const FirstSection = () => {
             <Col sm={5}>
               <div className={classes.singleWelcomeHero}>
                 <div>
-                  <img src="assets/images/rewardWomen.png" alt="reward women" />
+                  <img style={{height: '405px'}} src="assets/images/rewardWomen.png" alt="reward women" />
                 </div>
               </div>
             </Col>

@@ -81,11 +81,13 @@ body{
 
 
 .title{
-    font-family: 'Titan One',serif;
-    color: #0e292d !important;
-    font-size: 3.4rem;
+    font-family: 'Roboto', sans-serif;
+
     line-height: 3.8rem;
     margin-bottom: 1rem;
     text-align: left;
+    font-size: 43px;
+    color: #616060;
+    font-weight: 400;
 }
 
