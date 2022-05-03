@@ -26,6 +26,9 @@ query($id: ID!) {
   users {
     username
     job
+    ImgProfil {
+      url
+    }
   }
 }
 `

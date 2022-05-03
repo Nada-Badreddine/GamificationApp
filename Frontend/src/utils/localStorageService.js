@@ -18,6 +18,10 @@ const LocalStorageService = (
         const _setUserId = (id) => {
             localStorage.setItem("USER_ID", id);
         }
+
+        const _setAvailablePoints = (points) => {
+            localStorage.setItem("AVAILABLE_POINTS", points);
+        }
         const _getUserId = () => {
             return localStorage.getItem("USER_ID");
         }
@@ -53,7 +57,7 @@ const LocalStorageService = (
             getUserName:_getUserName,
             clearUserName:_clearUserName,
             clearUserId:_clearUserId,
-
+            setAvailablePoints: _setAvailablePoints,
         };
     })();
 export default LocalStorageService;

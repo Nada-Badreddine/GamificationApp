@@ -8,6 +8,7 @@ import {
 import { onError } from '@apollo/client/link/error';
 import React from 'react';
 import AppRoutes from './routes/AppRoutes';
+import { UserProvider } from "./context/userContext";
 import 'antd/dist/antd.css';
 
 const errorLink = onError(({ graphqlErrors }) => {
@@ -50,7 +51,11 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
+          <UserProvider >
+
       <AppRoutes />
+      </UserProvider>
+
     </ApolloProvider>
   );
 }

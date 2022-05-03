@@ -15,10 +15,12 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useMutation } from '@apollo/client';
+import { useApolloClient } from '@apollo/client';
 import UserContext from '../context/userContext';
 import LocalStorageService from '../utils/localStorageService';
 import { LOGIN_MUTATION } from '../services/loginService/loginMutation';
+import { GET_ORDERS_BY_USER } from '../services/orderServices/getOrdersByUser';
+import { LOAD_USER_BY_ID } from '../services/userServices/QueryUser'
 
 function Copyright(props) {
   return (
@@ -49,8 +51,9 @@ const validationSchema = yup.object({
 const theme = createTheme();
 export default function Login() {
   const navigate = useNavigate();
-  const { setIsAuth, setUserName, setUserID } = useContext(UserContext);
-  const [login] = useMutation(LOGIN_MUTATION);
+  const { setIsAuth, setUserName, setUserID, setAvailablePoints } = useContext(UserContext);
+  const client = useApolloClient();
+
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -58,27 +61,47 @@ export default function Login() {
     },
     validationSchema,
     onSubmit: async (values) => {
-      login({
-        variables: {
+      const { data: { login } } = await client.mutate({
+				mutation: LOGIN_MUTATION,
+				variables: {
           input: {
             identifier: values.email,
             password: values.password,
           },
-        },
-        // eslint-disable-next-line no-shadow
-        onCompleted: ({ login }) => {
-          setIsAuth(!!login.jwt);
-          setUserID(login.user.id);
+				},
+			});
 
-          setUserName(login.user.username);
+      const { data: dataOrders } = await client.query({
+				query: GET_ORDERS_BY_USER,
+				variables: {
+          id: login.user.id
+				},
+			});
 
-          LocalStorageService.setToken(login.jwt);
-          LocalStorageService.setUserId(login.user.id);
+      const { data: dataRewars } = await client.query({
+				query: LOAD_USER_BY_ID,
+				variables: {
+          id: login.user.id
+				},
+			});
 
-          LocalStorageService.setUserName(login.user.username);
-          navigate('/');
-        },
-      });
+      const totalPointsUsed = dataOrders?.user?.orders?.reduce((acc, curr) => acc+ curr?.TotalCart ?? 0, 0)
+      const totalPoints = dataRewars?.user?.user_rewards?.reduce((acc, curr) =>{
+        acc = acc + curr?.type_rewards[0]?.PointNumber ?? 0
+        return acc;
+      }, 0)
+      setAvailablePoints(totalPoints - totalPointsUsed)
+      setIsAuth(!!login.jwt);
+      setUserID(login.user.id);
+
+      setUserName(login.user.username);
+
+      LocalStorageService.setAvailablePoints(totalPoints - totalPointsUsed);
+      LocalStorageService.setToken(login.jwt);
+      LocalStorageService.setUserId(login.user.id);
+
+      LocalStorageService.setUserName(login.user.username);
+      navigate('/');
     },
   });
 

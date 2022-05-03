@@ -3,6 +3,7 @@ import React, { createContext, useState } from 'react';
 const UserContext = createContext({
   isAuth: false,
   userName: '',
+  availablePoints: 0,
   id: '',
   setUserID: () => {},
   setIsAuth: () => {},
@@ -20,6 +21,7 @@ export function UserProvider({ children }) {
   }
 
   const [id, setUserID] = useState(localStorage.getItem('USER_ID') || '');
+  const [availablePoints, setAvailablePoints] = useState(localStorage.getItem('AVAILABLE_POINTS') || 0);
   const [isAuth, setIsAuth] = useState(localStorage.getItem('TOKEN') || false);
   const [cart, setCart] = useState(getCartFromLocalStorage());
 
@@ -107,6 +109,8 @@ export function UserProvider({ children }) {
     addProductQuantity,
     removeProductQuantity,
     resetCart,
+    availablePoints,
+    setAvailablePoints
   };
 
   return (

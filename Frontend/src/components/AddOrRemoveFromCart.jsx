@@ -6,19 +6,22 @@ import Typography from '@mui/material/Typography';
 import classes from './GiftsPage/GiftPage.module.css'
 
 function AddOrRemoveFromCart({ item }) {
-  const { addToCart, cart, addProductQuantity, removeProductQuantity } =
+  const { addToCart, cart, addProductQuantity, removeProductQuantity, availablePoints, setAvailablePoints } =
     useContext(UserContext);
   const productInCart = cart.find((cartItem) => item.id === cartItem.id);
   const isProductExistInCart = !!productInCart;
+  const isDisableAddToCard = (item?.PointNumber ?? 0) > availablePoints
+
   return (
     <Box >
       {isProductExistInCart && (
         <Box display="flex" alignItems="center">
-                 <div className={classes.giftContentCartTagContainer}  onClick={() => {
-                      addProductQuantity(item);
-                    }} >
-                     <div className={classes.giftContentCartTag} >+</div>
-                   </div>
+          <button disabled={isDisableAddToCard} type="button" className={classes.giftContentCartTagContainer} onClick={() => {
+            addProductQuantity(item);
+            setAvailablePoints((prevAvailablePoints) => prevAvailablePoints - item?.PointNumber ?? 0)
+          }} >
+            <div className={classes.giftContentCartTag} >+</div>
+          </button>
           {/* <Button
             style={{
               background: "#333",
@@ -35,11 +38,13 @@ function AddOrRemoveFromCart({ item }) {
           <Typography id="modal-modal-title" variant="h6" component="h2" pr={1.2}>
             {productInCart.quantity}
           </Typography>
-          <div className={classes.giftContentCartTagContainer}  onClick={() => {
-                      removeProductQuantity(item);
-                    }} >
-                     <div className={classes.giftContentCartTag} >-</div>
-                   </div>
+          <button className={classes.giftContentCartTagContainer} onClick={() => {
+            removeProductQuantity(item);
+            setAvailablePoints((prevAvailablePoints) => prevAvailablePoints + item?.PointNumber ?? 0)
+
+          }} >
+            <div className={classes.giftContentCartTag} >-</div>
+          </button>
           {/* <Typography id="modal-modal-title" variant="h6" component="h2" px={1}>
             {productInCart.quantity}
           </Typography>
@@ -54,11 +59,12 @@ function AddOrRemoveFromCart({ item }) {
         </Box>
       )}
       {!isProductExistInCart && (
-                     <div className={classes.giftContentCartTagContainer}  onClick={() => {
-                      addToCart(item);
-                    }} >
-                     <div className={classes.giftContentCartTag} > Add to cart</div>
-                   </div>
+        <button disabled={isDisableAddToCard} className={classes.giftContentCartTagContainer} onClick={() => {
+          addToCart(item);
+          setAvailablePoints((prevAvailablePoints) => prevAvailablePoints - item?.PointNumber ?? 0)
+        }} >
+          <div className={classes.giftContentCartTag} > Add to cart</div>
+        </button>
         // <Button
         //   style={{
         //     background: "#333",

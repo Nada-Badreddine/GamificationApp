@@ -8,6 +8,12 @@
     position: relative;
 }
 
+.rewards {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
 .avatarWithBadge{
     
     width: 96px;
