@@ -80,14 +80,14 @@ const Cart = () => {
     0
   );
   const AddOrder = () => {
-    createOrder({
+      createOrder({
       variables: {
-        input: {
-          data: { TotalCart: totalPoints, users_permissions_user: userConecte, status: 'inProgress' },
-        },
+          input: {
+            data: { TotalCart: totalPoints, users_permissions_user: userConecte, status: 'inProgress' },
+          },
       },
       onCompleted: async (dataOrder) => {
-        Promise.all(
+      await Promise.all(
           cart?.map(async (item) => {
             await createOrderLine({
               variables: {
@@ -101,7 +101,7 @@ const Cart = () => {
       }
     });
   };
-
+// ba3Ed mena3ml add commande tbedel fi localeStorge
   const AddGiftToOrderLine = () => {
     AddOrder();
     resetCart()
@@ -109,8 +109,9 @@ const Cart = () => {
   };
 
   const { loading: loadingFavoris, data: dataFavoris, refetch } = useQuery(LOAD_FAVORIS_BY_USER_ID, { variables: { id: userConecte } })
+  // dataFavoris retour query
   const listFav = formatListFavoris(dataFavoris?.user?.favorises ?? [])
-
+  // listFav formatage lil donneés
   if (loadingFavoris) {
     return (
       <Box sx={{ display: 'flex', justifyContent: "center" }}>

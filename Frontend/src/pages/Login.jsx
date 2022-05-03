@@ -61,7 +61,7 @@ export default function Login() {
     },
     validationSchema,
     onSubmit: async (values) => {
-      const { data: { login } } = await client.mutate({
+      const { data } = await client.mutate({
 				mutation: LOGIN_MUTATION,
 				variables: {
           input: {
@@ -74,14 +74,14 @@ export default function Login() {
       const { data: dataOrders } = await client.query({
 				query: GET_ORDERS_BY_USER,
 				variables: {
-          id: login.user.id
+          id: data.login.user.id
 				},
 			});
 
       const { data: dataRewars } = await client.query({
 				query: LOAD_USER_BY_ID,
 				variables: {
-          id: login.user.id
+          id: data.login.user.id
 				},
 			});
 
@@ -91,16 +91,16 @@ export default function Login() {
         return acc;
       }, 0)
       setAvailablePoints(totalPoints - totalPointsUsed)
-      setIsAuth(!!login.jwt);
-      setUserID(login.user.id);
+      setIsAuth(!!data.login.jwt);
+      setUserID(data.login.user.id);
 
-      setUserName(login.user.username);
+      setUserName(data.login.user.username);
 
       LocalStorageService.setAvailablePoints(totalPoints - totalPointsUsed);
-      LocalStorageService.setToken(login.jwt);
-      LocalStorageService.setUserId(login.user.id);
+      LocalStorageService.setToken(data.login.jwt);
+      LocalStorageService.setUserId(data.login.user.id);
 
-      LocalStorageService.setUserName(login.user.username);
+      LocalStorageService.setUserName(data.login.user.username);
       navigate('/');
     },
   });

@@ -19,6 +19,8 @@ function AddOrRemoveFromCart({ item }) {
           <button disabled={isDisableAddToCard} type="button" className={classes.giftContentCartTagContainer} onClick={() => {
             addProductQuantity(item);
             setAvailablePoints((prevAvailablePoints) => prevAvailablePoints - item?.PointNumber ?? 0)
+            localStorage.setItem('AVAILABLE_POINTS', availablePoints - item?.PointNumber ?? 0)
+
           }} >
             <div className={classes.giftContentCartTag} >+</div>
           </button>
@@ -41,6 +43,7 @@ function AddOrRemoveFromCart({ item }) {
           <button className={classes.giftContentCartTagContainer} onClick={() => {
             removeProductQuantity(item);
             setAvailablePoints((prevAvailablePoints) => prevAvailablePoints + item?.PointNumber ?? 0)
+            localStorage.setItem('AVAILABLE_POINTS', availablePoints + item?.PointNumber ?? 0)
 
           }} >
             <div className={classes.giftContentCartTag} >-</div>
@@ -62,6 +65,7 @@ function AddOrRemoveFromCart({ item }) {
         <button disabled={isDisableAddToCard} className={classes.giftContentCartTagContainer} onClick={() => {
           addToCart(item);
           setAvailablePoints((prevAvailablePoints) => prevAvailablePoints - item?.PointNumber ?? 0)
+          localStorage.setItem('AVAILABLE_POINTS', availablePoints - item?.PointNumber ?? 0)
         }} >
           <div className={classes.giftContentCartTag} > Add to cart</div>
         </button>
