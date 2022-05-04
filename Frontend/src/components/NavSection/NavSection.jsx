@@ -33,19 +33,19 @@ const NavSection = () => {
                 <div className={classes.welcomeHero}>
                   <ul>
                     <li className={classes.active}>
-                      <a href="/">home</a>
+                      <a onClick={() => navigate('/')}>home</a>
                     </li>
                     <li className={classes.active}>
-                      <a href="/pageCategories">gift Catalog</a>
+                      <a onClick={() => navigate('/pageCategories')}>gift Catalog</a>
                     </li>
                     <li className={classes.active}>
-                      <a href="/typeRewards">types of rewards</a>
+                      <a onClick={() => navigate('/typeRewards')}>types of rewards</a>
                     </li>
                     <li className={classes.active}>
-                      <a href="/orders">orders</a>
+                      <a onClick={() => navigate('/orders')}>orders</a>
                     </li>
                     <li className={classes.active}>
-                      <a href="/userInformation">profil</a>
+                      <a onClick={() => navigate('/userInformation')}>profil</a>
                     </li>
                     <li>
                       <IconButton

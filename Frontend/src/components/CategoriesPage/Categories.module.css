@@ -13,6 +13,7 @@
 .giftContent{
     padding: 20px 0 20px 20px;
     height: 100%;
+    width: 85%;
 }
 .giftCategoriesSearchFilters{
     overflow-y: auto;

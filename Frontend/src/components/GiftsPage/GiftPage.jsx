@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import React, {  useState } from 'react';
 import { useParams } from "react-router";
 import classes from './GiftPage.module.css'
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
@@ -8,16 +8,12 @@ import { LOAD_GIFTS_BY_CATEGORY } from './../../services/giftServices/QueryAllGi
 import { LOAD_FAVORIS_BY_USER_ID } from './../../services/favorisServices/QueryFavoris'
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Filters from '../Filters';
 import AddOrRemoveFromFavoriteList from '../AddOrRemoveFromFavoriteList';
 import formatListFavoris from '../../utils/formatListFavoris'
 import AddOrRemoveFromCart from '../AddOrRemoveFromCart';
 
-const GiftPage = (props) => {
+const GiftPage = () => {
   const params = useParams();
   const current = params.catgId;
   const [searchQuery, setSearch] = useState('');
@@ -26,12 +22,9 @@ const GiftPage = (props) => {
   const { loading, data } = useQuery(LOAD_GIFTS_BY_CATEGORY, { variables: { id: current } });
   const { loading: loadingFavoris, data: dataFavoris, refetch } = useQuery(LOAD_FAVORIS_BY_USER_ID, { variables: { id: userConecte } })
 
-  console.log("aaaaaaaaa", data)
-  const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
   const ApiUrl = 'http://localhost:1337'
 
   const handleChangeSearch = (value) => {
-    console.log("valueee", value)
     setSearch(value);
   };
   const handleChange = (filterName) => {
