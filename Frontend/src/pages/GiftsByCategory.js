@@ -1,6 +1,6 @@
 import React from 'react';
 import NavSection from '../components/NavSection/NavSection';
-import Footeer from '../components/Footeer//Footeer';
+import Footeer from '../components/Footeer/Footeer';
 import Box from '@mui/material/Box';
 import GiftPage from './../components/GiftsPage/GiftPage';
 

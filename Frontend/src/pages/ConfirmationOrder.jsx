@@ -7,7 +7,7 @@ import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Typography from '@mui/material/Typography';
 import NavSection from '../components/NavSection/NavSection';
-import Footer from '../components/Footer';
+import Footeer from '../components/Footeer/Footeer';
 
 const steps = ['Confirmation order'];
 
@@ -46,7 +46,7 @@ export default function ConfirmationOrder() {
           </React.Fragment>
         </Paper>
       </Container>
-      <Footer />
+      <Footeer />
     </Box>
   );
 }

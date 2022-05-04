@@ -19,7 +19,6 @@ import { useApolloClient } from '@apollo/client';
 import UserContext from '../context/userContext';
 import LocalStorageService from '../utils/localStorageService';
 import { LOGIN_MUTATION } from '../services/loginService/loginMutation';
-import { GET_ORDERS_BY_USER } from '../services/orderServices/getOrdersByUser';
 import { LOAD_USER_BY_ID } from '../services/userServices/QueryUser'
 
 function Copyright(props) {
@@ -62,31 +61,24 @@ export default function Login() {
     validationSchema,
     onSubmit: async (values) => {
       const { data } = await client.mutate({
-				mutation: LOGIN_MUTATION,
-				variables: {
+        mutation: LOGIN_MUTATION,
+        variables: {
           input: {
             identifier: values.email,
             password: values.password,
           },
-				},
-			});
+        },
+      });
 
-      const { data: dataOrders } = await client.query({
-				query: GET_ORDERS_BY_USER,
-				variables: {
+      const { data: dataUser } = await client.query({
+        query: LOAD_USER_BY_ID,
+        variables: {
           id: data.login.user.id
-				},
-			});
+        },
+      });
 
-      const { data: dataRewars } = await client.query({
-				query: LOAD_USER_BY_ID,
-				variables: {
-          id: data.login.user.id
-				},
-			});
-
-      const totalPointsUsed = dataOrders?.user?.orders?.reduce((acc, curr) => acc+ curr?.TotalCart ?? 0, 0)
-      const totalPoints = dataRewars?.user?.user_rewards?.reduce((acc, curr) =>{
+      const totalPointsUsed = dataUser?.user?.orders?.reduce((acc, curr) => acc + curr?.TotalCart ?? 0, 0)
+      const totalPoints = dataUser?.user?.user_rewards?.reduce((acc, curr) => {
         acc = acc + curr?.type_rewards[0]?.PointNumber ?? 0
         return acc;
       }, 0)

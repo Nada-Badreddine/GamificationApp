@@ -12,7 +12,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import NavSection from '../components/NavSection/NavSection';
-import Footer from '../components/Footer';
+import Footeer from '../components/Footeer/Footeer';
 import { GET_ORDERS_BY_USER } from '../services/orderServices/getOrdersByUser';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -40,6 +40,7 @@ const Orders = () => {
   const { loading, data } = useQuery(GET_ORDERS_BY_USER, {
     variables: { id: userConecte },
   });
+
   if (loading) {
     return (
       <Box sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -90,7 +91,7 @@ const Orders = () => {
           </Table>
         </TableContainer>
       </Box>
-      <Footer />
+      <Footeer />
     </Box>
   );
 };

@@ -3,7 +3,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import FavorisCards from './../components/FavorisCards';
 import NavSection from '../components/NavSection/NavSection';
-import Footer from '../components/Footer';
+import Footeer from '../components/Footeer/Footeer';
 
 const FavorisPage = (props) => {
   return (
@@ -15,7 +15,7 @@ const FavorisPage = (props) => {
         </Typography>
         <FavorisCards />
       </Box>
-      <Footer />
+      <Footeer />
     </Box>
   );
 };

@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Cart from '../components/Cart';
 import NavSection from '../components/NavSection/NavSection';
-import Footer from '../components/Footer';
+import Footeer from '../components/Footeer/Footeer';
 
 const CartPage = () => {
   return (
@@ -17,7 +17,7 @@ const CartPage = () => {
         </Box>
         <Cart />
       </Box>
-      <Footer />
+      <Footeer />
     </Box>
   );
 };

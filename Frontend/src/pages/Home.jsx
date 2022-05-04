@@ -5,6 +5,7 @@ import SecondSection from '../components/SecondSection/SecondSection';
 import ThirdSection from '../components/ThirdSection/ThirdSection';
 import NavSection from '../components/NavSection/NavSection';
 import Footeer from '../components/Footeer/Footeer';
+
 function Home() {
   return (
     <Box backgroundColor="#efece9">

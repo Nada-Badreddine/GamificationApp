@@ -15,6 +15,12 @@ query($id: ID!) {
         }
         Description
       }
+      orders {
+        id
+        TotalCart
+        status
+        created_at
+      }
       job
     }
   }
@@ -28,6 +34,19 @@ query($id: ID!) {
     job
     ImgProfil {
       url
+    }
+    orders {
+      id
+      TotalCart
+      status
+      created_at
+    }
+    user_rewards {
+      type_rewards {
+        Title
+        PointNumber
+      }
+      Description
     }
   }
 }

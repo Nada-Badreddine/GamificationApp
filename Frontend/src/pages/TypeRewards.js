@@ -4,12 +4,11 @@ import Footeer from '../components/Footeer/Footeer';
 import RewardsType from '../components/RewardsType/RewardsType'
 const TypeRewards = () => {
   return (
-     <>
-   <NavSection />
-   <RewardsType/>
-     <Footeer/>
-  </>
-    
+    <>
+      <NavSection />
+      <RewardsType />
+      <Footeer />
+    </>
   );
 };
 

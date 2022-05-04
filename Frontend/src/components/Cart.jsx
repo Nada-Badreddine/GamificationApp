@@ -154,7 +154,7 @@ const Cart = () => {
                     </Box>
                     <Box>
                       <p>
-                        {item?.PointNumber} points
+                        {item?.PointNumber * item.quantity} points
                       </p>
                     </Box>
                   </Box>
