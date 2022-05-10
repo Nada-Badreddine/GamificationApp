@@ -1,0 +1,32 @@
+img {
+    border: 0.0625rem solid #e6ddd8;
+    height: 6.375rem;
+    width: 6.375rem;
+  }
+  .name {
+    color: #1d2424;
+    margin-bottom: 0;
+    font-weight: bold;
+    font-size:  1rem;
+    line-height: 1.25rem;
+    margin: 0;
+  }
+  .description {
+    color: #1d2424;
+    display: flex;
+    font-size: 17px!important;
+    line-height: 1.25rem;
+  }
+  header{
+    border-bottom: 0.0625rem solid #e6e6e6;
+    padding-bottom: 0.9375rem;
+    width: 100%
+  }
+  .headerTitle {
+    color: #1d2424;
+    font-weight: bold;
+    margin-bottom: 0;
+    font-size: 1rem;
+    line-height: 1.25rem;
+    margin: 0;
+  }

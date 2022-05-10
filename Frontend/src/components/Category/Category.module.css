@@ -1,0 +1,76 @@
+.giftContentImgContainer{
+    padding: 0;
+    position: relative;
+    width: 100%;
+    margin-bottom: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.giftContentImg{
+    width: 100%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px; 
+    vertical-align: middle;
+    border-style: none;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    height: 113px;
+    width: 50%;
+}
+.giftContentInfo{   
+    text-align: left !important;  
+}
+.giftContentInfoTitle{
+   
+    font-size: .875rem;
+    font-weight: 600;
+    color: #0f0f0f;
+    margin-bottom: 10px;
+    width: 100%; 
+    text-align: center!important;
+}
+.giftContentInfoextraInformation{
+    min-height: 100px; 
+}
+
+.giftContentInfoSousInformation{
+    text-align: center;
+
+    font-size: .875rem;
+    width: 100%;
+    color: #0f0f0f;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+}
+
+.giftContentButtnCart{
+    display: flex;
+    position: absolute;
+
+    font-size: .875rem;
+    width: 100%;
+    color: #0f0f0f;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.giftContentCartTagContainer{
+    position: relative;
+    left: 75px;
+    flex-wrap: wrap;
+    max-height: 39px;
+}
+.giftContentCartTag{
+    padding: 6px 14px;
+    border-radius: 5px;
+    border: solid 1px #291bb9;
+    margin-top: 5px;
+    margin-right: 10px;
+    font-size: 11px;
+    font-size: .6875rem;
+    font-weight: 500;
+    color: #291bb9;
+    cursor: pointer;
+}

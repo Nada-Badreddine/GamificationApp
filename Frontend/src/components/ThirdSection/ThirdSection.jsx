@@ -15,7 +15,8 @@ const ThirdSection = () => {
                   <img
                     src="assets/images/developer.png"
                     alt="developer"
-                    style={{ width: 450, height: 400 }}
+                    style={{ width: 450, height: 400, marginLeft: '-18px'
+                    }}
                   />
                 </div>
               </div>

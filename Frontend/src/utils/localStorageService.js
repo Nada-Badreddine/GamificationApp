@@ -25,16 +25,6 @@ const LocalStorageService = (
         const _getUserId = () => {
             return localStorage.getItem("USER_ID");
         }
-       
-
-
-
-     
-        
-        
-
-
-
         const _clearToken = () => {
             localStorage.removeItem("TOKEN");
         }

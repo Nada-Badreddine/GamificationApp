@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useContext } from 'react';
 import classes from './../styles/UserInfo.module.css';
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -9,8 +9,11 @@ import EditProfil from '../components/EditProfil/EditProfil';
 import { LOAD_USER_BY_ID } from '../services/userServices/QueryUser'
 import { useQuery } from '@apollo/client';
 import { LOAD_USERS } from '../services/userServices/QueryUser'
-
-
+import UserContext from '../context/userContext';
+import { Container } from 'react-bootstrap';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import TopUsers from '../components/TopUsers/TopUsers';
 const UserInformation = () => {
 
   const [openModal, setOpenModal] = useState(false);
@@ -21,7 +24,8 @@ const UserInformation = () => {
     setOpenModal(true);
   };
   const ApiUrl = 'http://localhost:1337'
-
+  const { availablePoints } = useContext(UserContext);
+  
 
   const totalPoints = data?.user?.user_rewards?.reduce((acc, curr) => {
     acc = acc + curr?.type_rewards[0]?.PointNumber ?? 0
@@ -38,9 +42,9 @@ const UserInformation = () => {
 
   const usersWithTotalPoints = dataUser?.users.map((user) => {
     return {
-      ...user,
+      ...user, 
       totalPoints: user?.user_rewards?.reduce((acc, curr) => {
-        acc = acc + curr?.type_rewards[0]?.PointNumber ?? 0
+        acc = acc + (curr?.type_rewards[0]?.PointNumber ?? 0)
         return acc;
       }, 0)
     }
@@ -48,6 +52,7 @@ const UserInformation = () => {
 
   const sortedUsers = usersWithTotalPoints.sort((a, b) => b.totalPoints - a.totalPoints);
 
+const slicedUsers= sortedUsers.slice(0,3)
   return (
     <div>
       <NavSection />
@@ -85,7 +90,7 @@ const UserInformation = () => {
               </div>
               <div >
                 <div>
-                  <p style={{ fontSize: '13px' }}> You have {totalPoints} Points</p>
+                  <p style={{ fontSize: '13px' }}> You have {availablePoints} Points</p>
                 </div>
               </div>
             </div>
@@ -97,12 +102,15 @@ const UserInformation = () => {
                   <div >
                     {item?.type_rewards.map((iteem) => {
                       return (
-                        <div className={classes.rewards}>
-                          <span>{iteem?.Title}</span>
-                          <span>{iteem?.PointNumber} Points</span>
-                          <span>{item?.Description}</span>
+                        <Container>
+                          <Row style={{display:"flex",justifyContent:"space-between"}}>       
+                          <Col>{iteem?.Title}</Col>
+                          <Col>{iteem?.PointNumber} Points</Col>
+                          <Col>{item?.Description}</Col>
+                          </Row>
 
-                        </div>
+                        </Container>
+                        
                       )
                     })}
                   </div>
@@ -117,43 +125,12 @@ const UserInformation = () => {
           <span> Top performing employee</span>
         </div>
         {
-          sortedUsers.map((item, index) => {
+          slicedUsers.map((item, index) => {
+        
             return (
-              <div style={{
-                display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center'
-              }} className={classes.dashboardTopPerformingEmployeeContent}>
-                <div className={index === 0 ? classes.topRankedEmployee : index === 1 ? classes.topRankedtwoEmployee : classes.topRankedthreeEmployee}>
-                  <div className={classes.topRankedEmployeeInfo}>
-                    <div className={classes.userAvatarWithBadge}>
-                      <div className={classes.userAvatar} >
-                        <span className={classes.antAvatarImage} >
-                          <img src="https://tse3.mm.bing.net/th?id=OIP.2i5UaEHaQM3PYAYXQyM1AAAAAA&pid=Api&P=0&w=179&h=179" />
-                        </span>
-                      </div>
-                      <div>
-                        <a href="/">
-                          <img className={classes.userBadgeTopEmployee} src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Star_icon_stylized.svg/1077px-Star_icon_stylized.svg.png" alt="star" />
-                        </a>
-                      </div>
-                    </div>
-                    <div className={classes.topRankedStudentsCardEmployeeInfo}>
-                      <div className={classes.topRankedUserName}> {item?.username} </div>
-                      <div className={classes.topRankedUserJob}>
-                        <span>Web Developer</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className={classes.scoreInfo}>
-                    <div className={classes.BadgescoreInfo}>
-                      <div className={index === 0 ? classes.cercle : index === 1 ? classes.cercletwo : classes.cerclethree}> </div>
-                      <div className={classes.scoreInfoRank}>{index + 1}</div>
-                    </div>
-                    <div className={classes.scoreTotalPoint}>{item.totalPoints}<span style={{ marginLeft: '5px' }}>Points</span></div>
-                  </div>
-                </div>
-              </div>
+              <>
+<TopUsers item={item} index={index}/>
+              </>
             )
           })
         }

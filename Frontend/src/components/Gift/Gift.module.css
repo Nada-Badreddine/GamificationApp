@@ -1,0 +1,58 @@
+.giftContentImgContainer{
+    padding: 0;
+    position: relative;
+    width: 100%;
+    margin-bottom: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.giftContentImg{
+    width: 70%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px; 
+    vertical-align: middle;
+    border-style: none;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    height: 164px;
+
+}
+.giftContentInfo{
+   
+    text-align: left !important;  
+}
+
+.giftContentInfoTitle{
+    text-align: center;
+
+    font-size: .875rem;
+    font-weight: 600;
+    color: #0f0f0f;
+    margin-bottom: 10px;
+    width: 100%; 
+}
+.giftContentInfoextraInformation{
+    min-height: 100px; 
+}
+.giftContentInfoSousInformation{
+   text-align: center;
+    font-size: .875rem;
+    width: 100%;
+    color: #0f0f0f;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+
+}
+.giftContentButtnCart{
+    display: flex;
+    font-size: .875rem;
+    width: 100%;
+    color: #0f0f0f;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    align-items: center;
+}

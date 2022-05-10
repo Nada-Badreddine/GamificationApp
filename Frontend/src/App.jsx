@@ -26,28 +26,6 @@ const client = new ApolloClient({
   link,
 });
 
-// const params = {
-//   link: ApolloLink.from([
-//     setContext((_, { headers }) => {
-//       const token = localStorage.getItem('TOKEN');
-
-//       return {
-//         headers: {
-//           ...headers,
-//           authorization: `Bearer ${token}`,
-//         },
-//       };
-//     }),
-//     new HttpLink({
-//       uri: 'http://localhost:1337/graphql',
-
-//     }),
-//   ]),
-//   cache: new InMemoryCache(),
-// };
-
-// const client = new ApolloClient(params);
-
 function App() {
   return (
     <ApolloProvider client={client}>

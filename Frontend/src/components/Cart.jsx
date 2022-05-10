@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 import UserContext from '../context/userContext';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import CircularProgress from '@mui/material/CircularProgress';
 import { CREATE_ORDER_MUTATION } from './../services/orderServices/MutationOrder';
 import { useMutation } from '@apollo/client';
@@ -11,15 +10,8 @@ import { ADD_GIFTS_TO_LINE_MUTATION } from './../services/orderServices/Mutation
 import { LOAD_FAVORIS_BY_USER_ID } from './../services/favorisServices/QueryFavoris'
 import formatListFavoris from '../utils/formatListFavoris';
 import { makeStyles } from '@material-ui/core/styles';
-import AddOrRemoveFromFavoriteList from "../components/AddOrRemoveFromFavoriteList"
-import AddOrRemoveFromCart from "../components/AddOrRemoveFromCart"
 import { useNavigate } from 'react-router-dom';
-
-// commande =>  total, status,userId, id 1
-// commandeItem commandId 1, quantity 3, giftId 1
-// commandeItem commandId 1, quantity 4, giftId 2
-
-// gifts/ quantity
+import CartItem from './CartItem/CartItem'
 const useStyles = makeStyles((theme) => ({
   img: {
     border: "0.0625rem solid #e6ddd8",
@@ -28,9 +20,9 @@ const useStyles = makeStyles((theme) => ({
   },
   name: {
     color: "#1d2424",
-    'font-family': 'fantasy',
+   
     'margin-bottom': 0,
-    'text-transform': 'uppercase',
+    'font-weight': 'bold',
     'font-size': ' 1rem',
     'line-height': '1.25rem',
     'margin': 0,
@@ -38,8 +30,8 @@ const useStyles = makeStyles((theme) => ({
   description: {
     color: ' #1d2424',
     display: 'flex',
-    'font-family': 'function-book,Arial,sans-serif',
-    'font-size': '1rem',
+  
+    'font-size': '17px!important',
     'line-height': '1.25rem',
   },
   header: {
@@ -49,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
   },
   headerTitle: {
     color: "#1d2424",
-    'font-family': 'fantasy',
+    'font-weight': 'bold',
     'margin-bottom': 0,
     'font-size': ' 1rem',
     'line-height': '1.25rem',
@@ -101,7 +93,7 @@ const Cart = () => {
       }
     });
   };
-// ba3Ed mena3ml add commande tbedel fi localeStorge
+
   const AddGiftToOrderLine = () => {
     AddOrder();
     resetCart()
@@ -109,9 +101,9 @@ const Cart = () => {
   };
 
   const { loading: loadingFavoris, data: dataFavoris, refetch } = useQuery(LOAD_FAVORIS_BY_USER_ID, { variables: { id: userConecte } })
-  // dataFavoris retour query
+ 
   const listFav = formatListFavoris(dataFavoris?.user?.favorises ?? [])
-  // listFav formatage lil donneés
+
   if (loadingFavoris) {
     return (
       <Box sx={{ display: 'flex', justifyContent: "center" }}>
@@ -126,41 +118,7 @@ const Cart = () => {
       <Box>
         {cart?.map((item, index) => {
           return (
-            <Box mb={3} backgroundColor="#fff" p={1.4}>
-              <Box className={classes.header} >
-                <p className={classes.headerTitle}>
-                  Gift: {index + 1}
-                </p>
-              </Box>
-              <Box display="flex" mt={1.4}>
-                <img className={classes.img} src={'http://localhost:1337' + item?.Img[0]?.formats?.thumbnail?.url} alt="" />
-                <Box width="100%" ml={1}>
-                  <Box display="flex" justifyContent='space-between'>
-                    <Box>
-                      <Box>
-                        <p className={classes.name}>
-                          {item?.Name}
-                        </p>
-                      </Box>
-                      <Box className={classes.description}>
-                        <p>
-                          {item?.Description}
-                        </p>
-                      </Box>
-                      <Box display='flex' justifyContent="space-between" alignItems="center">
-                        <AddOrRemoveFromFavoriteList refetch={refetch} listFav={listFav} gift={item} />
-                        <AddOrRemoveFromCart item={item} />
-                      </Box>
-                    </Box>
-                    <Box>
-                      <p>
-                        {item?.PointNumber * item.quantity} points
-                      </p>
-                    </Box>
-                  </Box>
-                </Box>
-              </Box>
-            </Box>
+          <CartItem  item={item} index={index} listFav={listFav} gift={item} refetch={refetch} />
           );
         })}
       </Box>

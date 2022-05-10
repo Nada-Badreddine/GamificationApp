@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import classes from './NavSection.module.css';
 import Container from 'react-bootstrap/Container';
 import { IconButton, Badge } from '@material-ui/core';
@@ -22,10 +22,10 @@ const NavSection = () => {
               data-minus-value-desktop="70"
               data-minus-value-mobile="55"
               data-speed="  "
-            >
+ >
               <Container>
                 <div className={classes.navbarHeader}>
-                  <a className={classes.navbarBrand} href="/">
+                  <a className={classes.navbarBrand} onClick={() => navigate('/')}>
                     Oyez<span>Gift</span>.
                   </a>
                 </div>

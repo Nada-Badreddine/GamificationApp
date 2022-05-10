@@ -12,7 +12,7 @@ const CartPage = () => {
       <Box pb={2}>
         <Box pl={2} mb={1}>
           <Typography variant="h5" color="text.primary">
-            Mon panier
+            My Basket
           </Typography>
         </Box>
         <Cart />

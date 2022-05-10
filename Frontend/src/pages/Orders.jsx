@@ -14,7 +14,7 @@ import Paper from '@mui/material/Paper';
 import NavSection from '../components/NavSection/NavSection';
 import Footeer from '../components/Footeer/Footeer';
 import { GET_ORDERS_BY_USER } from '../services/orderServices/getOrdersByUser';
-
+import Moment from 'react-moment';
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.common.black,
@@ -55,7 +55,7 @@ const Orders = () => {
       <Box px={5} pb={2}>
         <Box mb={2}>
           <Typography variant="h5" color="text.primary">
-            MA LISTE DES COMMANDES
+           Order List
           </Typography>
         </Box>
         <TableContainer component={Paper}>
@@ -80,7 +80,8 @@ const Orders = () => {
                   </StyledTableCell>
                   <StyledTableCell align="center">{row.status}</StyledTableCell>
                   <StyledTableCell align="center">
-                    {row.created_at}
+           
+                    <Moment format="YYYY/MM/DD HH:mm" date={row.created_at}/>
                   </StyledTableCell>
                   <StyledTableCell align="center">
                     <button>details</button>

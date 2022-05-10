@@ -4,15 +4,11 @@ import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import { useQuery } from '@apollo/client';
-import { useNavigate } from 'react-router-dom';
-import { LOAD_CATEGORIES } from './../../services/categoriesServices/QueryAllCategories'
-
+import { LOAD_CATEGORIES } from '../../services/categoriesServices/QueryAllCategories'
+import Category from '../Category/Category'
 const Categories = () => {
   const [searchQuery, setSearch] = useState('');
-  const { loading, data } = useQuery(LOAD_CATEGORIES)
-
-  const navigate = useNavigate();
-  const ApiUrl = 'http://localhost:1337'
+  const { loading, data } = useQuery(LOAD_CATEGORIES) 
   const handleChangeSearch = (value) => {
     setSearch(value);
   };
@@ -53,22 +49,7 @@ const Categories = () => {
               {filtreditems?.map((item) => {
                 return (
                   <div>
-                    <div className={classes.giftContentImgContainer}>
-                      <img className={classes.giftContentImg} alt="gift thumbnail" src={ApiUrl + item?.Img[0]?.formats?.thumbnail?.url} />
-                    </div>
-                    <div className={classes.giftContentInfo}>
-                      <div className={classes.giftContentInfoTitle}>{item?.Name} </div>
-                      <div className={classes.giftContentInfoextraInformation}>
-                        <div className={classes.giftContentInfoSousInformation} >choose your gifts in this category</div>
-                        <div className={classes.giftContentButtnCart}>
-                          <div className={classes.giftContentCartTagContainer} >
-                            <div className={classes.giftContentCartTag} onClick={() => navigate('/giftsbyCategory/' + item?.id)} > See gifts</div>
-                          </div>
-
-
-                        </div>
-                      </div>
-                    </div>
+                   <Category item={item}  />
                   </div>
                 )
               })}

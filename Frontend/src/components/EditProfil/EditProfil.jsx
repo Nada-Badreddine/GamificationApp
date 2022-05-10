@@ -97,7 +97,7 @@ const EditProfil = (props) => {
             Update
           </Button>
 
-          <button onClick={handleClick}>Click me</button>
+        
         </div>
       </Modal>
     </>

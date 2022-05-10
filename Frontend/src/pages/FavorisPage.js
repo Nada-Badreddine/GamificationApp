@@ -11,7 +11,7 @@ const FavorisPage = (props) => {
       <NavSection />
       <Box px={5} pb={2}>
         <Typography variant="h5" color="text.primary">
-          MA LISTE DES FAVORITES
+          Favorite List
         </Typography>
         <FavorisCards />
       </Box>

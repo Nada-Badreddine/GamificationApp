@@ -23,14 +23,11 @@
     align-items: center;
 
 }
-
 .userBadge{
-
     top: 66.6px;
     right: 23.4994px;
     position: absolute;
     width: 49%;
-
 }
 .infoUserName{
     font-size: 1.125rem;
@@ -54,8 +51,6 @@
 .dashboardRecompenses{
     width: 100%;
 }
-
-
 .dashboardRecompensesTitle{
     font-size: .75rem;
     font-weight: bold;
@@ -71,192 +66,12 @@
     font-weight: bold;
     text-align: center;  
 }
-.dashboardTopPerformingEmployeeContent{
-    margin-top: 20px;
-}
-.topRankedEmployee{
-    margin-bottom: 20px;
-    padding: 0 13px;
-    height: 98px;
-    width: 60%;
-    border-radius: 5px;
-    border: solid 2px;
-    display: flex;
-    justify-content: space-between;
-    border-color: rgb(255, 216, 1);
-    background-color: rgb(255, 247, 204);
-}
-.topRankedtwoEmployee{
-    margin-bottom: 20px;
-    padding: 0 13px;
-    height: 98px;
-    width: 60%;
-    border-radius: 5px;
-    border: solid 2px;
-    display: flex;
-    justify-content: space-between;
-    border-color: rgb(204, 204, 205);
-    background-color: rgb(245, 245, 245);
-}
-.topRankedthreeEmployee{
-    margin-bottom: 20px;
-    padding: 0 13px;
-    height: 98px;
-    width: 60%;
-    border-radius: 5px;
-    border: solid 2px;
-    display: flex;
-    justify-content: space-between;
-    border-color: rgb(189, 123, 101);
-    background-color: rgb(242, 228, 224);
-}
-
-
-.topRankedEmployeeInfo{
-    height: 100%;
-    width: 90%;
-    display: flex;
-    align-items: center;
-    margin-top: 5px;
-    padding: 10px;
-
-
-
-}
 .avatarUser{
     height:100px;
     width:100px;
     border-radius: 130px ;
     margin: auto;
     display: block;
-}
-
-.topRankedEmployeeBadge{
-    position: relative;
-
-}
-.userAvatarWithBadge{
-    width: 60px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-}
-.topRankedStudentsCardEmployeeInfo{
-    margin-left: 17.5px;
-    width: 100%;
-}
-.userAvatar{
-    text-transform: uppercase;
-    position: relative;
-}
-.antAvatarImage{
-    width: 60px;
-    height: 60px;
-    line-height: 60px;
-    font-size: 18px;
-    background: transparent;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    font-feature-settings: 'tnum';
-    position: relative;
-    display: inline-block;
-    overflow: hidden;
-    color: #fff;
-    white-space: nowrap;
-    text-align: center;
-    vertical-align: middle;
-    border-radius: 50%;
-
-
-
-}
-.antAvatarImage > img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-.userBadgeTopEmployee{
-
-    top: 41px;
-    right: 16.5px;
-    position: absolute;
-    width: 46%;
-}
-
-
-.topRankedUserName{
-    font-size: .875rem;
-    font-weight: 600;
-    color: #0f0f19;
-}
-
-
-.topRankedUserJob{
-    font-size: .625rem;
-    font-weight: 500;
-}
-
-.scoreInfo{
-    position: relative;
-}
-
-.BadgescoreInfo{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-.scoreInfoRank{
-    position: absolute;
-    font-size: .625rem;
-    font-weight: 500;
-    color: #0f0f0f;
-    top: 16px;
-    width: 24px;
-    height: 24px;
-    text-align: center;
-    right: calc(50% - 12px);
-    line-height: 20px;
-
-}
-.cercle{
-    height: 28px;
-    width: 28px;
-    background-color: rgb(255, 216, 1);;
-		border-radius: 50%; 
-        margin-top: 14px;
-
-}
-.cercletwo{
-    height: 28px;
-    width: 28px;
-    background-color: rgb(204, 204, 205);
-		border-radius: 50%; 
-        margin-top: 14px;
-
-}
-.cerclethree{
-    height: 28px;
-    width: 28px;
-    background-color: rgb(189, 123, 101);
-		border-radius: 50%; 
-        margin-top: 14px;
-
-}
-.scoreTotalPoint{
-    margin-top: 10px;
-    font-size: 11px;
-    font-weight: 500;
-    color: #0f0f0f;
-    width: 55px;
-    text-align: center;
-    display: flex;
-
 }
 .settingInfo{
     position: absolute;

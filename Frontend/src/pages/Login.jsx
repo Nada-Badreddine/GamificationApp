@@ -30,8 +30,8 @@ function Copyright(props) {
       {...props}
     >
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
+      <Link color="inherit">
+        OyezGift
       </Link>
       {new Date().getFullYear()}
     </Typography>
@@ -50,10 +50,10 @@ const validationSchema = yup.object({
 const theme = createTheme();
 export default function Login() {
   const navigate = useNavigate();
-  const { setIsAuth, setUserName, setUserID, setAvailablePoints } = useContext(UserContext);
+  const { setIsAuth, setUserName, setUserID, setAvailablePoints } = useContext(UserContext); 
   const client = useApolloClient();
 
-  const formik = useFormik({
+  const formik = useFormik({  
     initialValues: {
       email: '',
       password: '',
@@ -69,7 +69,6 @@ export default function Login() {
           },
         },
       });
-
       const { data: dataUser } = await client.query({
         query: LOAD_USER_BY_ID,
         variables: {
@@ -83,7 +82,7 @@ export default function Login() {
         return acc;
       }, 0)
       setAvailablePoints(totalPoints - totalPointsUsed)
-      setIsAuth(!!data.login.jwt);
+      setIsAuth(!!data.login.jwt); 
       setUserID(data.login.user.id);
 
       setUserName(data.login.user.username);
@@ -91,7 +90,6 @@ export default function Login() {
       LocalStorageService.setAvailablePoints(totalPoints - totalPointsUsed);
       LocalStorageService.setToken(data.login.jwt);
       LocalStorageService.setUserId(data.login.user.id);
-
       LocalStorageService.setUserName(data.login.user.username);
       navigate('/');
     },

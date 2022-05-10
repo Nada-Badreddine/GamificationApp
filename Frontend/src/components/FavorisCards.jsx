@@ -22,25 +22,7 @@ function FavorisCards() {
     {listFav?.map((item) => {
         return (
           <CardItem item={item} listFav={listFav} refetch={refetch} />
-          // <Card >
-          //   <div style={{ display: 'flex' }}>
-          //     <div style={{ width: '176px' }} >
-          //       <img src={ApiUrl + item?.Img[0]?.formats?.thumbnail?.url} alt="Logo" />
-          //     </div>
-          //     <CardContent>
-          //       <Typography gutterBottom variant="h5" component="div">
-          //         {item?.Name}
-          //       </Typography>
-          //       <Typography variant="body2" color="text.secondary">
-          //         {item?.Description}
-          //         <br />
-          //         {item?.PointNumber} Point
-          //       </Typography>
-          //     </CardContent>
-          //   </div>
-          //   <CardActions>
-          //   </CardActions>
-          // </Card>
+        
         )
       })}
     </Box>

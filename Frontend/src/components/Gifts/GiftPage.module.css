@@ -43,7 +43,7 @@
     white-space: nowrap;
     background: #fafafa;
     padding: 0 7px;
-
+    cursor: pointer;
     height: auto;
 }
 .SuperTitleContent{
@@ -141,53 +141,6 @@
     *box-sizing: border-box;
     background-repeat: no-repeat;
 }
-
-.giftContentImgContainer{
-    padding: 0;
-    position: relative;
-    width: 100%;
-    margin-bottom: 17px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.giftContentInfo{
-   
-    text-align: left !important;  
-}
-.giftContentImg{
-    width: 100%;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px; 
-    vertical-align: middle;
-    border-style: none;
-    background-repeat: no-repeat;
-    box-sizing: border-box;
-    height: 164px;
-
-}
-.giftContentInfoTitle{
-   
-    font-size: .875rem;
-    font-weight: 600;
-    color: #0f0f0f;
-    margin-bottom: 10px;
-    width: 100%; 
-}
-.giftContentInfoextraInformation{
-    min-height: 100px; 
-}
-.giftContentInfoSousInformation{
-    display: flex;
-    font-size: .875rem;
-    width: 100%;
-    color: #0f0f0f;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    background-repeat: no-repeat;
-    box-sizing: border-box;
-
-}
 .giftContentCartTag{
     padding: 6px 14px;
     border-radius: 5px;
@@ -203,13 +156,4 @@
     display: flex;
     flex-wrap: wrap;
     max-height: 39px;
-}
-.giftContentButtnCart{
-    display: flex;
-    font-size: .875rem;
-    width: 100%;
-    color: #0f0f0f;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    align-items: center;
 }

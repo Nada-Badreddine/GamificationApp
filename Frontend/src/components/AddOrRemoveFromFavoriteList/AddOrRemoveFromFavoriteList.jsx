@@ -25,11 +25,14 @@ function AddOrRemoveFromFavoriteList({ gift, listFav, refetch }) {
     return elem?.id === gift?.id;
   });
 
+
+  console.log(ExistingFavorite) 
+
   return (
     <>
       {ExistingFavorite ? (
         <IconButton
-          aria-label="add to favorites"
+          aria-label="delete favorites"
           onClick={async () => {
            await deleteFavoris({variables: { id :ExistingFavorite.favId }});
             refetch();    
@@ -44,7 +47,7 @@ function AddOrRemoveFromFavoriteList({ gift, listFav, refetch }) {
           aria-label="add to favorites"
           onClick={() => AddToFavoris()}
         >
-          <FavoriteIcon sx={{ color: grey[200] }} />
+          <FavoriteIcon sx={{ color: grey[400] }} />
         </IconButton>
       )}
     </>

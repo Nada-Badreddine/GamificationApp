@@ -3,11 +3,16 @@ import classes from './FirstSection.module.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { useNavigate } from 'react-router-dom';
 
 import { Button } from '@material-ui/core';
 import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
 
-const FirstSection = () => {
+
+const FirstSection = () =>
+
+ {
+  const navigate = useNavigate();
   return (
     <div className={classes.body}>
       <div className={classes.welcomeHero}>
@@ -34,7 +39,8 @@ const FirstSection = () => {
                     variant="contained"
                     
                   >
-                    <CardGiftcardIcon /> See Gifts
+                    <CardGiftcardIcon />
+                    <span  onClick={() => navigate('/pageCategories')} style={{marginLeft: '12px'}}>See Gift Catalog</span> 
                   </Button>
                 </div>
               </div>

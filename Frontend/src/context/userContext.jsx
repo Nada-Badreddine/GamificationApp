@@ -32,17 +32,6 @@ export function UserProvider({ children }) {
       return cartItems;
     });
 
-    //     const updatedItemIndex = cart.findIndex(el => el.id===item?.id)
-
-    //  if (updatedItemIndex < 0) {
-    //       cart.push({ ...item, quantity: 1 });
-    //     } else {
-    //       const updatedItem = {
-    //         ...cart[updatedItemIndex]
-    //       };
-    //       updatedItem.quantity++;
-    //       cart[updatedItemIndex] = updatedItem;
-    //     }
   };
   const addProductQuantity = (item) => {
     setCart((prevCart) => {
@@ -62,8 +51,8 @@ export function UserProvider({ children }) {
       const productInCart = prevCart.find(
         (cartItem) => item.id === cartItem.id
       );
-      if (!!productInCart && productInCart.quantity === 1) {
-        const filtredCart = prevCart.filter((it) => it.id !== item.id);
+      if (!!productInCart && productInCart.quantity === 1) { 
+        const filtredCart = prevCart.filter((it) => it.id !== item.id); 
         localStorage.setItem('cart', JSON.stringify(filtredCart));
         return filtredCart;
       }
@@ -78,13 +67,10 @@ export function UserProvider({ children }) {
     });
   };
 
-  // make cart a string and store in local space
-  //  let stringCart = JSON.stringify(cart);
-  //  localStorage.setItem("cart", stringCart)
-  //  console.log("cart",cart)
+
 
   const removeFromCart = (item) => {
-    let hardCopy = [...cart];
+    let hardCopy = [...cart]; 
     hardCopy = hardCopy.filter((cartItem) => cartItem.id !== item.id);
     setCart(hardCopy);
   };

@@ -4,17 +4,16 @@ import classes from './GiftPage.module.css'
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import { useQuery } from '@apollo/client'
 import { useNavigate } from 'react-router-dom';
-
-import { LOAD_GIFTS_BY_CATEGORY } from './../../services/giftServices/QueryAllGifts'
-import { LOAD_FAVORIS_BY_USER_ID } from './../../services/favorisServices/QueryFavoris'
+import { LOAD_GIFTS_BY_CATEGORY } from '../../services/giftServices/QueryAllGifts'
+import { LOAD_FAVORIS_BY_USER_ID } from '../../services/favorisServices/QueryFavoris'
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
 import Filters from '../Filters';
-import AddOrRemoveFromFavoriteList from '../AddOrRemoveFromFavoriteList';
-import formatListFavoris from '../../utils/formatListFavoris'
-import AddOrRemoveFromCart from '../AddOrRemoveFromCart';
-import { LOAD_CATEGORIES } from './../../services/categoriesServices/QueryAllCategories'
 
+import formatListFavoris from '../../utils/formatListFavoris'
+
+import { LOAD_CATEGORIES } from '../../services/categoriesServices/QueryAllCategories'
+import Gift from '../Gift/Gift'
 const GiftPage = () => {
   const params = useParams();
   const current = params.catgId;
@@ -26,7 +25,7 @@ const GiftPage = () => {
   const { data: dataCategories } = useQuery(LOAD_CATEGORIES)
   const navigate = useNavigate();
 
-  const ApiUrl = 'http://localhost:1337'
+
 
   const handleChangeSearch = (value) => {
     setSearch(value);
@@ -34,11 +33,13 @@ const GiftPage = () => {
   const handleChange = (filterName) => {
     setPointFilter((prevFilter) => prevFilter === filterName ? '' : filterName);
   };
+
   const checkFilter = (point) => {
     if (pointFilter === "lessThan100") return point < 100
     if (pointFilter === "between100And400") return point >= 100 && point <= 400
     return point > 400
   }
+
 
   if (loadingFavoris || loading) {
     return (<Box sx={{ display: 'flex', justifyContent: "center" }}>
@@ -102,22 +103,10 @@ const GiftPage = () => {
           <div className={classes.giftContentCards}>
             <div className={classes.giftContentList}>
               {filtredItems?.map((item) => {
+      
                 return (
                   <div>
-                    <div className={classes.giftContentImgContainer}>
-                      <img className={classes.giftContentImg} alt="gift thumbnail" src={ApiUrl + item?.Img[0]?.formats?.thumbnail?.url} />
-                    </div>
-                    <div className={classes.giftContentInfo}>
-                      <div className={classes.giftContentInfoTitle}>{item?.Name}</div>
-                      <div className={classes.giftContentInfoextraInformation}>
-                        <div className={classes.giftContentInfoSousInformation} >{item?.Description}</div>
-                        <div className={classes.giftContentInfoSousInformation} >{item?.PointNumber} Points</div>
-                        <div className={classes.giftContentButtnCart}>
-                          <AddOrRemoveFromCart item={item} />
-                          <AddOrRemoveFromFavoriteList gift={item} refetch={refetch} listFav={listFav} />
-                        </div>
-                      </div>
-                    </div>
+                   <Gift item={item} refetch={refetch} listFav={listFav}/>
                   </div>
                 )
               })}
