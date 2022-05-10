@@ -7,11 +7,11 @@
     align-items: center;
     position: relative;
 }
-
-.rewards {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
+.settingInfo{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
 }
 
 .avatarWithBadge{
@@ -23,11 +23,27 @@
     align-items: center;
 
 }
+.avatarUser{
+    height:100px;
+    width:100px;
+    border-radius: 130px ;
+    margin: auto;
+    display: block;
+}
+
 .userBadge{
     top: 66.6px;
     right: 23.4994px;
     position: absolute;
     width: 49%;
+}
+.infoUserJob{
+    font-size: 12px;
+    margin-bottom: 25px;
+    font-weight: bold;
+    color: #0f0f0f;
+    width: 100%;
+    text-align: center;
 }
 .infoUserName{
     font-size: 1.125rem;
@@ -36,6 +52,7 @@
     width: 100%;
     text-align: center;
 }
+
 .performanceTotalPoints{
     width: 100%;
     margin-bottom: 20px;
@@ -47,7 +64,6 @@
     font-weight: bold;
     color: #0f0f0f;
 }
-
 .dashboardRecompenses{
     width: 100%;
 }
@@ -56,6 +72,11 @@
     font-weight: bold;
     color: #0f0f0f;
     padding-bottom: 10px;
+}
+.rewards {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
 .dashboardTopPerformingEmployee{
     padding-top: 20px;
@@ -66,24 +87,5 @@
     font-weight: bold;
     text-align: center;  
 }
-.avatarUser{
-    height:100px;
-    width:100px;
-    border-radius: 130px ;
-    margin: auto;
-    display: block;
-}
-.settingInfo{
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    cursor: pointer;
-}
-.infoUserJob{
-    font-size: 12px;
-    margin-bottom: 25px;
-    font-weight: bold;
-    color: #0f0f0f;
-    width: 100%;
-    text-align: center;
-}
+
+

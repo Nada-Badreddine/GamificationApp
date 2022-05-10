@@ -4,12 +4,12 @@ import {
   Routes,
   BrowserRouter,
 } from 'react-router-dom';
-import Register from '../pages/Register';
+
 import Login from '../pages/Login';
 import UserContext from '../context/userContext';
 import GiftsByCategory from '../pages/GiftsByCategory';
 import CategoriesPage from '../pages/CategoriesPage';
-import UserInformation from '../pages/UserInformation';
+import ProfilPage from '../pages/ProfilPage';
 import TypeRewards from '../pages/TypeRewards';
 import FavorisPage from '../pages/FavorisPage';
 import CartPage from '../pages/CartPage';
@@ -30,7 +30,7 @@ export default function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/userInformation" element={<UserInformation />} />
+        <Route exact path="/ProfilPage" element={<ProfilPage />} />
         <Route exact path="/typeRewards" element={<TypeRewards />} />
         <Route exact path="/FavorisPage" element={<FavorisPage />} />
         <Route exact path="/pageCategories" element={<CategoriesPage />} />
@@ -39,7 +39,6 @@ export default function AppRoutes() {
           path="/giftsbyCategory/:catgId"
           element={<GiftsByCategory />}
         />
-        <Route exact path="/register" element={<Register />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/cart" element={<CartPage />} />
         <Route exact path="/" element={<Home />} />

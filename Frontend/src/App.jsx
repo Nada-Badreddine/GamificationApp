@@ -30,7 +30,6 @@ function App() {
   return (
     <ApolloProvider client={client}>
           <UserProvider >
-
       <AppRoutes />
       </UserProvider>
 

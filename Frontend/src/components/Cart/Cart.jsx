@@ -1,17 +1,17 @@
 import React, { useContext, useState } from 'react';
-import UserContext from '../context/userContext';
+import UserContext from '../../context/userContext';
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
-import { CREATE_ORDER_MUTATION } from './../services/orderServices/MutationOrder';
+import { CREATE_ORDER_MUTATION } from '../../services/orderServices/MutationOrder';
 import { useMutation } from '@apollo/client';
 import { useQuery } from '@apollo/client'
-import ConfirmOrderModal from '../components/ConfirmOrderModal'
-import { ADD_GIFTS_TO_LINE_MUTATION } from './../services/orderServices/MutationOrderLine';
-import { LOAD_FAVORIS_BY_USER_ID } from './../services/favorisServices/QueryFavoris'
-import formatListFavoris from '../utils/formatListFavoris';
+import ConfirmOrderModal from './../ConfirmOrderModal'
+import { ADD_GIFTS_TO_LINE_MUTATION } from '../../services/orderServices/MutationOrderLine';
+import { LOAD_FAVORIS_BY_USER_ID } from '../../services/favorisServices/QueryFavoris'
+import formatListFavoris from '../../utils/formatListFavoris';
 import { makeStyles } from '@material-ui/core/styles';
 import { useNavigate } from 'react-router-dom';
-import CartItem from './CartItem/CartItem'
+import CartItem from './../CartItem/CartItem'
 const useStyles = makeStyles((theme) => ({
   img: {
     border: "0.0625rem solid #e6ddd8",

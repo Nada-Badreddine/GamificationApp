@@ -4,7 +4,6 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useNavigate } from 'react-router-dom';
-
 import { Button } from '@material-ui/core';
 import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
 

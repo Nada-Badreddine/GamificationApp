@@ -1,7 +1,7 @@
 import React from 'react';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import FavorisCards from './../components/FavorisCards';
+import Favoris from './../components/Favoris/Favoris';
 import NavSection from '../components/NavSection/NavSection';
 import Footeer from '../components/Footeer/Footeer';
 
@@ -13,7 +13,7 @@ const FavorisPage = (props) => {
         <Typography variant="h5" color="text.primary">
           Favorite List
         </Typography>
-        <FavorisCards />
+        <Favoris />
       </Box>
       <Footeer />
     </Box>

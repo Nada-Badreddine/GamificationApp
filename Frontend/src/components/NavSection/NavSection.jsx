@@ -45,7 +45,7 @@ const NavSection = () => {
                       <a onClick={() => navigate('/orders')}>orders</a>
                     </li>
                     <li className={classes.active}>
-                      <a onClick={() => navigate('/userInformation')}>profil</a>
+                      <a onClick={() => navigate('/ProfilPage')}>profil</a>
                     </li>
                     <li>
                       <IconButton

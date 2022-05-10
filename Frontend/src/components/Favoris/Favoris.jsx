@@ -2,11 +2,11 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import { useQuery } from '@apollo/client'
 import CircularProgress from '@mui/material/CircularProgress';
-import { LOAD_FAVORIS_BY_USER_ID } from './../services/favorisServices/QueryFavoris'
-import formatListFavoris from '../utils/formatListFavoris';
-import CardItem from '../components/Card';
+import { LOAD_FAVORIS_BY_USER_ID } from '../../services/favorisServices/QueryFavoris'
+import formatListFavoris from '../../utils/formatListFavoris';
+import CardItem from './../Card';
 
-function FavorisCards() {
+function Favoris() {
   const userConecte = localStorage.getItem("USER_ID");
   const { loading, data, refetch } = useQuery(LOAD_FAVORIS_BY_USER_ID, { variables: { id: userConecte } })
   const listFav = formatListFavoris(data?.user?.favorises ?? [])
@@ -28,4 +28,4 @@ function FavorisCards() {
     </Box>
   );
 }
-export default FavorisCards;
+export default Favoris;

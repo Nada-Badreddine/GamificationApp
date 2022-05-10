@@ -1,8 +1,8 @@
 import React, { useContext, memo } from 'react';
-import UserContext from '../context/userContext';
+import UserContext from '../../context/userContext';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import classes from './Gifts/GiftPage.module.css'
+import classes from './../Gifts/GiftPage.module.css'
 
 function AddOrRemoveFromCart({ item }) {
   const { addToCart, cart, addProductQuantity, removeProductQuantity, availablePoints, setAvailablePoints } =
