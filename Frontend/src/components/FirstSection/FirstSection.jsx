@@ -48,7 +48,7 @@ const FirstSection = () =>
             <Col sm={5}>
               <div className={classes.singleWelcomeHero}>
                 <div>
-                  <img style={{height: '405px'}} src="assets/images/rewardWomen.png" alt="reward women" />
+                  <img style={{height: '405px',width: '100%'}} src="assets/images/rewardWomen.png" alt="reward women" />
                 </div>
               </div>
             </Col>
