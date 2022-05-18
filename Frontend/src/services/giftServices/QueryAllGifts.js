@@ -7,6 +7,7 @@ export const LOAD_GIFTS = gql`
         id
     Name
     Description
+    created_at
     Img {
       formats
     }
