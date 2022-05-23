@@ -32,7 +32,7 @@ module.exports = {
               
               var config = {
                 method: 'post',
-                url: 'https://hooks.slack.com/services/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',
+                url: 'https://hooks.slack.com/services/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',
                 
                 headers: { 
                   'Authorization': 'Bearer xoxp-xapp-1-A03DMG1QRLG-3452505188785-a0c3f60f6776e3f1276ce5b88f2a6cc9c0689ac2dd9281fb9701013a315afbb3', 
