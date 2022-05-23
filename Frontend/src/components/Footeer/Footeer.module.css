@@ -21,9 +21,15 @@ body{
 	overflow-x:hidden;
 }
 .welcomeHero {
-    position: relative;
+    position: sticky;
+
+
+    width: 100%;
     z-index: 1;
-    background: #f8f9fd;
+    bottom: 0;
+    height: 70px;
+    background-color: #bfbfbf4a;
+
 }
 
 
@@ -34,7 +40,7 @@ body{
     color: #616060;
     font-size: 24px;
     font-weight: 500;
-    padding: 45px 0px;
+  
     text-transform:capitalize;
 }
 .navbarHeader a.navbarBrand span{display: inline-block;color:#e99c2e;text-transform:capitalize;}

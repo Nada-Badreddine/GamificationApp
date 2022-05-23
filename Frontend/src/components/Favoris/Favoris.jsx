@@ -10,6 +10,8 @@ function Favoris() {
   const userConecte = localStorage.getItem("USER_ID");
   const { loading, data, refetch } = useQuery(LOAD_FAVORIS_BY_USER_ID, { variables: { id: userConecte } })
   const listFav = formatListFavoris(data?.user?.favorises ?? [])
+  //const firstElement = listFav.shift();
+  console.log("ss",listFav)
 
   
   if (loading) {
@@ -18,14 +20,14 @@ function Favoris() {
     </Box>)
     }
   return (
-    <Box display="flex" gap={1} flexWrap="wrap" mt={2}>
+    <div style={{display:'flex' }}>
     {listFav?.map((item) => {
         return (
           <CardItem item={item} listFav={listFav} refetch={refetch} />
         
         )
       })}
-    </Box>
+    </div>
   );
 }
 export default Favoris;

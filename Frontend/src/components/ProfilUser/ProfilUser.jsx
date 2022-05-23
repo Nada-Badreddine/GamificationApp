@@ -87,7 +87,7 @@ const slicedUsers= sortedUsers.slice(0,3)
           <div style={{ textAlign: 'center' }}>
             <div className={classes.performanceTotalPoints}>
               <div className={classes.performanceTotalPointsTitle}>
-                <span >Total Points</span>
+                <span style={{    fontSize: '1.0rem'}} >Total Points</span>
               </div>
               <div >
                 <div>
@@ -98,25 +98,50 @@ const slicedUsers= sortedUsers.slice(0,3)
             <div className={classes.dashboardRecompenses}>
               <div className={classes.dashboardRecompensesTitle}> Achivements and Recompenses </div>
               <div className={classes.dashboardRecompensesContent}></div>
-              {data?.user?.user_rewards?.map((item) => {
+              
+        <div className={classes.courseTime}>
+<Container style={{maxWidth:'1280px'}}>
+{data?.user?.user_rewards?.map((item,index) => {
+  console.log('aa',data)
                 return (
                   <div >
                     {item?.type_rewards.map((iteem) => {
                       return (
-                        <Container>
-                          <Row style={{display:"flex",justifyContent:"space-between"}}>       
-                          <Col>{iteem?.Title}</Col>
-                          <Col>{iteem?.PointNumber} Points</Col>
-                          <Col>{item?.Description}</Col>
-                          </Row>
-
-                        </Container>
                         
+                        <div className={classes.timeContent}>
+  <div className={classes.timeContentSuper}>
+<div className={classes.timeContentTitleContainer}>
+
+<font  style={{verticalAlign: 'inherit',    marginLeft: '10px'
+}}>{index+1} </font>
+
+
+</div>
+<div className={classes.timeContentTitle}>{iteem?.Title}</div>
+
+  </div>
+  <div className={classes.timeContentDesciption}>
+    <div>
+      <p style={{marginTop: '8px',fontSize: '16px'}}>{item?.Description} </p>
+     
+    </div>
+  </div>
+  
+</div>
                       )
                     })}
                   </div>
                 )
               })}
+
+<div>
+</div>
+<div>
+</div>
+<div>
+</div>
+</Container>
+        </div>
             </div>
           </div>
         </div>

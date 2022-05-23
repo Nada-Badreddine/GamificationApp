@@ -6,11 +6,12 @@ import Col from 'react-bootstrap/Col';
 import { useQuery } from '@apollo/client'
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { AiOutlineHeart } from 'react-icons/ai';
-
+import AddOrRemoveFromCart from '../AddOrRemoveFromCart';
+import AddOrRemoveFromFavoriteList from '../AddOrRemoveFromFavoriteList';
 import { LOAD_GIFTS } from '../../services/giftServices/QueryAllGifts'
 
 
-const SecondSection = () => {
+const SecondSection = ({ item, refetch, listFav, width }) => {
   const { data } = useQuery(LOAD_GIFTS)
   {/*
    const items=[{number:1},{number:6},{number:2},{number:8}]
@@ -18,8 +19,6 @@ const SecondSection = () => {
    const updatedOSArray = items.map((a) =>{
     return {number: a.number + 1 };
   })
-
-
 */}
 
 const updatedOSArray = data?.gifts?.map((a) =>{
@@ -44,7 +43,7 @@ const ApiUrl = 'http://localhost:1337'
             <Row>
             {slicedUsers?.map((item) => {
                 return (
-<Col md={3} sm={4}>
+              <Col md={3} sm={4}>
                 <div className={classes.singleNewArrival}>
                   <div className={classes.singleNewArrivalBg}>
                     <img
@@ -55,20 +54,18 @@ const ApiUrl = 'http://localhost:1337'
 
                     <div className={classes.newArrivalCart}>
                       <p>
-                        <AiOutlineShoppingCart />
-                        <a href="#">
-                          add <span>to </span> cart
-                        </a>
+                      <AddOrRemoveFromCart item={item} />
+                      
                       </p>
                       <p className={classes.arrivalReview}>
-                        <AiOutlineHeart />
+                      <AddOrRemoveFromFavoriteList gift={item} refetch={refetch} listFav={listFav} />
                       </p>
                     </div>
                   </div>
                   <h4>
                     <a href="#">{item?.Name}</a>
                   </h4>
-                  <p className={classes.arrivalProductPrice}>$65.00</p>
+                  <p className={classes.arrivalProductPrice}>{item?.PointNumber} Points</p>
                 </div>
               </Col>
 

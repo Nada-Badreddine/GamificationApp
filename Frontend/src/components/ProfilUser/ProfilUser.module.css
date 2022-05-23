@@ -68,10 +68,10 @@
     width: 100%;
 }
 .dashboardRecompensesTitle{
-    font-size: .75rem;
+    font-size: 1.0rem;
     font-weight: bold;
     color: #0f0f0f;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
 }
 .rewards {
     display: flex;
@@ -89,3 +89,54 @@
 }
 
 
+.courseTime{
+    height: 450px;
+    padding-right: 15px;
+    overflow-y: auto;
+}
+.timeContent{
+    border-bottom: 2px solid #222;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+.timeContentSuper{
+    font-size: 1.25rem;
+    line-height: 1.25;
+    letter-spacing: -.5px;
+    width: 35%;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    text-align: left;
+    color: #0f0f0f;
+    display: flex;
+}
+.timeContentTitle{
+    font-size: 17px;
+    line-height: 1.25;
+    letter-spacing: -.5px;
+    margin-top: 16px;
+}
+
+.timeContentDesciption{
+    overflow: hidden;
+    height: 59px; 
+    line-height: 1.22;
+    letter-spacing: -.45px;
+    width: 60%;
+    font-weight: 300;
+    font-stretch: normal;
+    font-style: normal;
+    text-align: left;
+    color: #0f0f0f;
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+.timeContentTitleContainer{
+    margin-top: 11px;
+    margin-right: 27px;
+    text-decoration: underline;
+    box-sizing: border-box;
+}

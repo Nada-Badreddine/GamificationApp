@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from './RewardType.module.css'
-import Badge from '@mui/material/Badge';
 function RewardType({item}) {
+  console.log(item)
   return (
     <div className={classes.rewardDetailsCard}>
 
@@ -10,6 +10,7 @@ function RewardType({item}) {
     <img src="assets/images/tresor.png"/>
     </span>
     </div>
+    
     <div className={classes.ImgCardDetails}>
         
     <div  className={classes.ImgCardDetailsName}>
@@ -21,11 +22,14 @@ function RewardType({item}) {
    
     </div>
     <div className={classes.CardDetailsqSousDetails} >
-    <div>{item?.Description}</div> 
+    <div style={{overflow: 'hidden',
+    height: '58px'}}>{item?.Description}</div> 
     
     </div>
     </div>
-  
+    <div  className={classes.PointDetails}  >
+  <p style={{fontSize: '10px',marginBottom:'0px !important',fontWeight: 'bold'}}>{item?.PointNumber} Points</p>
+  </div>
  
     
     </div>

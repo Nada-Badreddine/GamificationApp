@@ -62,3 +62,18 @@
     height: 100%;
     object-fit: cover;
 }
+
+.PointDetails{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-color: #e99c2e;
+    border-style: solid;
+    width: 174px;
+    border-radius: 62px 32px;
+    padding-top: 8px;
+    height: 33px;
+    margin-bottom: 48px;
+    border-radius: 12px;
+
+}

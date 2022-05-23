@@ -6,6 +6,8 @@ export const LOAD_TYPE_REWARDS = gql`
       typeRewards  {
     Title
     Description
+    PointNumber
+
   }
     }
  `

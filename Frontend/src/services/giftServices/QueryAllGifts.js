@@ -8,6 +8,7 @@ export const LOAD_GIFTS = gql`
     Name
     Description
     created_at
+    PointNumber
     Img {
       formats
     }

@@ -14,6 +14,7 @@ import Paper from '@mui/material/Paper';
 import NavSection from '../components/NavSection/NavSection';
 import Footeer from '../components/Footeer/Footeer';
 import { GET_ORDERS_BY_USER } from '../services/orderServices/getOrdersByUser';
+
 import Moment from 'react-moment';
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -53,26 +54,23 @@ const Orders = () => {
     <Box backgroundColor="#efece9">
       <NavSection />
       <Box px={5} pb={2}>
-        <Box mb={2}>
-          <Typography variant="h5" color="text.primary">
-           Order List
-          </Typography>
-        </Box>
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 700 }} aria-label="customized table">
+       
+        <TableContainer component={Paper} style={{width:'86%',marginLeft: 'auto',
+    marginRight: 'auto',marginTop: '40px'}}>
+          <Table sx={{ minWidth: 700 }} aria-label="customized table"  >
             <TableHead>
               <TableRow>
-                <StyledTableCell align="center">id</StyledTableCell>
-                <StyledTableCell align="center">total</StyledTableCell>
+                <StyledTableCell align="center">id Order</StyledTableCell>
+                <StyledTableCell align="center">total Points</StyledTableCell>
                 <StyledTableCell align="center">status</StyledTableCell>
                 <StyledTableCell align="center">created_at</StyledTableCell>
-                <StyledTableCell align="center"></StyledTableCell>
+             
               </TableRow>
             </TableHead>
             <TableBody>
               {data?.user?.orders?.map((row) => (
                 <StyledTableRow key={row.id}>
-                  <StyledTableCell component="th" scope="row">
+                  <StyledTableCell align="center" component="th" scope="row">
                     {row.id}
                   </StyledTableCell>
                   <StyledTableCell align="center">
@@ -83,9 +81,7 @@ const Orders = () => {
            
                     <Moment format="YYYY/MM/DD HH:mm" date={row.created_at}/>
                   </StyledTableCell>
-                  <StyledTableCell align="center">
-                    <button>details</button>
-                  </StyledTableCell>
+               
                 </StyledTableRow>
               ))}
             </TableBody>
